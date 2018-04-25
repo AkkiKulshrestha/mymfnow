@@ -38,6 +38,14 @@
 
         </activity>
 
+        <activity
+            android:name=".MainPortalDashboard"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+
+
+
     </application>
 
 </manifest>
