@@ -40,7 +40,7 @@ dependencies {
     implementation 'com.github.rtoshiro.mflibrary:mflibrary:1.0.0'
     implementation 'com.ernestoyaquello.stepperform:vertical-stepper-form:0.9.9'
     implementation 'net.gotev:uploadservice:3.0.3'
-
+    implementation 'com.github.amlcurran.showcaseview:library:5.4.3'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
