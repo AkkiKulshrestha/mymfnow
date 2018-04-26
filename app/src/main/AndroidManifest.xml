@@ -39,6 +39,11 @@
         </activity>
 
         <activity
+            android:name=".LoginScreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity
             android:name=".MainPortalDashboard"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"/>

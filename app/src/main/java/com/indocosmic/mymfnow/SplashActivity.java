@@ -34,7 +34,7 @@ public class SplashActivity extends AppCompatActivity {
     int YourApkVersionCode;
     private int STORAGE_PERMISSION_CODE = 23;
     // Splash screen timer
-    private static int SPLASH_TIME_OUT = 1500;
+    private static int SPLASH_TIME_OUT = 5000;
 
     Dialog dialog;
     String Force_Update_flag = "false";
@@ -128,8 +128,8 @@ public class SplashActivity extends AppCompatActivity {
     private void update_dialog(String versionCode) {
         if(versionCode!="" || versionCode!=null){
             int v_code = Integer.valueOf(versionCode);
-            Force_Update_flag = "true";
-            v_code = 2;
+            /*Force_Update_flag = "true";
+            v_code = 2;*/
 
             if((YourApkVersionCode < v_code) && Force_Update_flag.equalsIgnoreCase("true")){
                 Log.d("version code",""+v_code);
@@ -168,7 +168,7 @@ public class SplashActivity extends AppCompatActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Intent i = new Intent(getApplicationContext(),MainPortalDashboard.class);
+                        Intent i = new Intent(getApplicationContext(),LoginScreen.class);
                         startActivity(i);
 
 
@@ -180,7 +180,7 @@ public class SplashActivity extends AppCompatActivity {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    Intent i = new Intent(getApplicationContext(),MainPortalDashboard.class);
+                    Intent i = new Intent(getApplicationContext(),LoginScreen.class);
                     startActivity(i);
 
                 }

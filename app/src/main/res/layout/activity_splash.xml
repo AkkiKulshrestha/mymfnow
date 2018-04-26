@@ -15,7 +15,8 @@
         android:id="@+id/sample_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/splash_logo"
+        android:src="@drawable/splash_background_image"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -26,6 +27,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/primary_light_blue"
         android:text="@string/app_name"
+        android:visibility="gone"
         android:layout_gravity="center"
         android:gravity="center"
         android:textSize="40sp"/>
