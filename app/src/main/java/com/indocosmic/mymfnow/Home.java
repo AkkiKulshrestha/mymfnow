@@ -1,7 +1,10 @@
 package com.indocosmic.mymfnow;
 
 
+import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -16,6 +19,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ExpandableListView;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.indocosmic.mymfnow.adapters.ExpandableListAdapter;
@@ -51,6 +55,7 @@ public class Home extends AppCompatActivity
         ImageButton menuRight = (ImageButton) findViewById(R.id.menuRight);
 
 
+
         menuLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,6 +87,23 @@ public class Home extends AppCompatActivity
         createGroupList();
 
         createCollection();
+        View header2 = navigationView2.getHeaderView(0);
+        LinearLayout LayoutShare = (LinearLayout)header2.findViewById(R.id.LayoutShare);
+        LayoutShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context = getApplicationContext();
+                final String appPackageName = context.getPackageName();
+                Intent sendIntent = new Intent();
+                sendIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "Download MYMFNOW -  https://play.google.com/store/apps/details?id=" + appPackageName);
+                sendIntent.setType("text/plain");
+
+                context.startActivity(sendIntent);
+            }
+        });
+
 
         expandableList = (ExpandableListView) findViewById(R.id.navigationmenu);
 
@@ -271,7 +293,15 @@ public class Home extends AppCompatActivity
         } else if (id == R.id.nav_change_password) {
             text = "pool";
         }else if (id == R.id.nav_rateus) {
-            text = "pool";
+            try {
+                Uri marketUri = Uri.parse("market://details?id=" + getPackageName());
+                Intent marketIntent = new Intent(Intent.ACTION_VIEW, marketUri);
+                startActivity(marketIntent);
+            }catch(ActivityNotFoundException e) {
+                Uri marketUri = Uri.parse("https://play.google.com/store/apps/details?id=" + getPackageName());
+                Intent marketIntent = new Intent(Intent.ACTION_VIEW, marketUri);
+                startActivity(marketIntent);
+            }
         }
         Toast.makeText(this, "You have chosen " + text, Toast.LENGTH_LONG).show();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -279,4 +309,7 @@ public class Home extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.END);
         return true;
     }
+
+
+
 }

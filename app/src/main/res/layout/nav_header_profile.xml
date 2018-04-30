@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="180dp"
@@ -9,13 +9,19 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="horizontal"
+    android:weightSum="10"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:id="@+id/LayoutShare"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_weight="5"
+        android:layout_gravity="center|bottom"
+        android:gravity="center"
         android:layout_alignParentStart="true"
         android:layout_marginStart="20dp">
 
@@ -36,9 +42,14 @@
 
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:id="@+id/LayoutLogout"
+
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_weight="5"
+        android:layout_gravity="center|bottom"
+        android:gravity="center"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="20dp">
 
@@ -58,4 +69,4 @@
             android:text="LOGOUT"/>
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>
