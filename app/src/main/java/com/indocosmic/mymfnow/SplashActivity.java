@@ -42,6 +42,7 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (!isTaskRoot())
         {
             final Intent intent = getIntent();
@@ -51,9 +52,10 @@ public class SplashActivity extends AppCompatActivity {
                 return;
             }
         }
-
+        Intent i = new Intent(getApplicationContext(),LoginScreen.class);
+        startActivity(i);
         setContentView(R.layout.activity_splash);
-        force_update();
+       // force_update();
 
     }
 
@@ -171,7 +173,7 @@ public class SplashActivity extends AppCompatActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Intent i = new Intent(getApplicationContext(),LoginScreen.class);
+                        Intent i = new Intent(getApplicationContext(),Home.class);
                         startActivity(i);
 
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,7 +13,7 @@
         tools:layout_editor_absoluteX="8dp">
 
 
-        <include layout="@layout/toolback_with_back"/>
+        <!--<include layout="@layout/toolback_with_back"/>-->
 
         <ScrollView
             android:layout_width="match_parent"
@@ -46,13 +46,14 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="10">
+
                 <android.support.v7.widget.CardView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
                     android:layout_weight="5"
                     android:layout_margin="5dp"
-                    android:background="#5e4f4f">
+                    app:cardBackgroundColor="#5e4f4f">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -62,16 +63,15 @@
                         android:padding="10sp"
                         android:layout_margin="5dp"/>
 
-
                 </android.support.v7.widget.CardView>
+
                 <android.support.v7.widget.CardView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
                     android:layout_weight="5"
                     android:layout_margin="5dp"
-
-                    android:background="#606473">
+                    app:cardBackgroundColor="#5e4f4f">
 
                     <TextView
                         android:layout_width="wrap_content"

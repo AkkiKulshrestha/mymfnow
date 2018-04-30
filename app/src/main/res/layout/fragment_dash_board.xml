@@ -1,0 +1,200 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.indocosmic.mymfnow.fragments.DashBoard">
+
+
+    <LinearLayout
+    android:layout_margin="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:weightSum="6"
+    android:layout_marginBottom="4dp">
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        app:cardBackgroundColor="#36C6D3"
+        android:elevation="8dp"
+        app:cardCornerRadius="3dp"
+        android:layout_marginEnd="5dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/mutual_fund_investment_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rs. 4,000"
+            android:padding="10dp"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:gravity="center_vertical" />
+
+            <TextView
+                android:id="@+id/txt_mutual_fund_investment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mutual Fund \nInvestment"
+                android:textColor="@color/white"
+                android:layout_gravity="bottom"
+                android:padding="10dp"
+                />
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        app:cardBackgroundColor="#F44336"
+        android:elevation="8dp"
+        app:cardCornerRadius="3dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/stock_holding_amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Rs. 7,000"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:gravity="center_vertical" />
+
+            <TextView
+                android:id="@+id/txt_stock_holding"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Stock Holdings"
+                android:textColor="@color/white"
+                android:layout_gravity="bottom"
+                android:padding="10dp"
+                />
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
+
+
+    <LinearLayout
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="6"
+        android:layout_marginBottom="4dp">
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            app:cardBackgroundColor="#8BC34A"
+            android:elevation="8dp"
+            app:cardCornerRadius="3dp"
+            android:layout_marginEnd="5dp">
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/traditional_debt_investment_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Rs. 8,000"
+                    android:padding="10dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/white"
+                    android:gravity="center_vertical" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Traditional Debt Investments"
+                    android:textColor="@color/white"
+                    android:layout_gravity="bottom"
+                    android:padding="10dp"
+                    />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            app:cardBackgroundColor="#00BCD4"
+            android:elevation="8dp"
+            app:cardCornerRadius="3dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/net_worth_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Rs. 12,000"
+                    android:padding="10dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/white"
+                    android:gravity="center_vertical" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Net Worth"
+                    android:textColor="@color/white"
+                    android:padding="10dp" />
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+    <WebView
+        android:id="@+id/graph"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp">
+
+    </WebView>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/mutual_fund_detail_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp">
+
+    </android.support.v7.widget.RecyclerView>
+
+
+</LinearLayout>

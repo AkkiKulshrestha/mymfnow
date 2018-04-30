@@ -33,6 +33,8 @@ public class LoginScreen extends AppCompatActivity {
 
         Layout_user_login= (LinearLayout)findViewById(R.id.Layout_user_login);
         Layout_advisor_login= (LinearLayout)findViewById(R.id.Layout_advisor_login);
+        Btn_Login = (Button) findViewById(R.id.Btn_Login);
+
 
         LayoutTabUser.setBackgroundColor(getResources().getColor(R.color.colorPrimaryLight));
         LayoutTabAdvisor.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
@@ -63,17 +65,17 @@ public class LoginScreen extends AppCompatActivity {
             }
         });
 
-        Edt_PanNo = (EditText)findViewById(R.id.Edt_PanNo);
-        Edt_PanNo.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
-
-        Btn_Login = (Button)findViewById(R.id.Btn_Login);
         Btn_Login.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),CalculatorDashboard.class);
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(),Home.class);
                 startActivity(i);
             }
         });
+
+        Edt_PanNo = (EditText)findViewById(R.id.Edt_PanNo);
+        Edt_PanNo.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
+
 
     }
 

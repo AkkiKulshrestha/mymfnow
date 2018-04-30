@@ -1,143 +1,145 @@
 <resources>
 
-        <!-- Base application theme. -->
-
-        <!-- Base application theme. -->
-        <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-            <!-- Customize your theme here. -->
-            <item name="colorPrimary">@color/colorPrimary</item>
-            <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-            <item name="colorAccent">@color/colorAccent</item>
-        </style>
-        <style name="AppTheme.NoActionBar">
-
-            <item name="windowActionBar">false</item>
-            <item name="windowNoTitle">true</item>
-        </style>
-
-        <style name="Theme.Transparent" parent="Theme.AppCompat.Light.NoActionBar">
-            <item name="android:windowNoTitle">true</item>
-            <item name="android:windowActionBar">false</item>
-            <item name="android:windowFullscreen">true</item>
-            <item name="android:windowContentOverlay">@null</item>
-            <item name="android:windowIsTranslucent">true</item>
-        </style>
-
-        <style name="SCBSwitch" parent="Theme.AppCompat.Light">
-            <!-- active thumb & track color (30% transparency) -->
-            <item name="colorControlActivated">#034f84</item>
-
-            <!-- inactive thumb color -->
-            <item name="colorSwitchThumbNormal">#f1f1f1</item>
-
-            <!-- inactive track color (30% transparency) -->
-            <item name="android:colorForeground">#42221f1f</item>
-        </style>
-
-        <style name="yourstyle" parent="@style/Base.TextAppearance.AppCompat.Title">
-            <item name="android:textSize">15sp</item>
-            <item name="android:textColor">#FFA500</item>
-        </style>
-
-        <style name="floatlabelededittext">
-            <item name="android:textColor">#212121</item>
+    <!-- Base application theme. -->
 
 
+    <!-- Base application theme. -->
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
 
-        </style>
+    <style name="AppTheme.NoActionBar">
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Transparent" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="SCBSwitch" parent="Theme.AppCompat.Light">
+        <!-- active thumb & track color (30% transparency) -->
+        <item name="colorControlActivated">#034f84</item>
+
+        <!-- inactive thumb color -->
+        <item name="colorSwitchThumbNormal">#f1f1f1</item>
+
+        <!-- inactive track color (30% transparency) -->
+        <item name="android:colorForeground">#42221f1f</item>
+    </style>
+
+    <style name="yourstyle" parent="@style/Base.TextAppearance.AppCompat.Title">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">#FFA500</item>
+    </style>
+
+    <style name="floatlabelededittext">
+        <item name="android:textColor">#212121</item>
 
 
+    </style>
 
 
-        <style name="DialogTheme" parent="android:Theme.Material.Light.Dialog">
-            <item name="colorAccent">@color/colorPrimary</item>
-            <item name="android:padding">1dp</item>
+    <style name="DialogTheme" parent="android:Theme.Material.Light.Dialog">
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="android:padding">1dp</item>
 
-        </style>
-        <style name="menuitem">
-            <item name="android:textStyle"></item>
-        </style>
-        <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    </style>
 
-        <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="menuitem">
+        <item name="android:textStyle"></item>
+    </style>
 
-        <style name="AppBaseTheme" parent="android:Theme.Light">
-            <!--
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
                 Theme customizations available in newer API levels can go in
                 res/values-vXX/styles.xml, while customizations related to
                 backward-compatibility can go here.
             -->
-        </style>
+    </style>
 
-        <style name="TextAppearence.App.TextInputLayout" parent="@android:style/TextAppearance">
-            <item name="android:textColor">@color/colorPrimary</item>
-            <item name="android:textSize">12sp</item>
-        </style>
+    <style name="TextAppearence.App.TextInputLayout" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">12sp</item>
+    </style>
 
-        <style name="TextAppearence.App.Text" parent="@android:style/TextAppearance">
-            <item name="android:textColor">@color/black</item>
-            <item name="android:textSize">15sp</item>
+    <style name="TextAppearence.App.Text" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">15sp</item>
 
-        </style>
+    </style>
 
-        <style name="AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-        <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-        <style name="MooTextAppearanceSpinnerItem" parent="android:TextAppearance.DeviceDefault.Widget.TextView.SpinnerItem">
-            <item name="android:textColor">#F00</item>
-            <item name="android:textSize">50sp</item>
-        </style>
+    <style name="MooTextAppearanceSpinnerItem" parent="android:TextAppearance.DeviceDefault.Widget.TextView.SpinnerItem">
+        <item name="android:textColor">#F00</item>
+        <item name="android:textSize">50sp</item>
+    </style>
 
-        <style name="MyMaterialTheme" parent="MyMaterialTheme.Base">
+    <style name="MyMaterialTheme" parent="MyMaterialTheme.Base">
 
-        </style>
+    </style>
 
-        <style name="MyMaterialTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
-            <item name="windowNoTitle">true</item>
-            <item name="windowActionBar">false</item>
-            <item name="colorPrimary">@color/colorPrimary</item>
-            <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-            <item name="colorAccent">@color/colorAccent</item>
-        </style>
+    <style name="MyMaterialTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
 
-        <style name="TextLabel" parent="TextAppearance.AppCompat">
-            <!-- Hint color and label color in FALSE state -->
-            <item name="android:textColorHint">@color/colorPrimary</item>
-            <item name="android:textSize">20sp</item>
-            <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
-            <item name="colorAccent">@color/black</item>
-            <item name="colorControlNormal">@color/grey</item>
-            <item name="colorControlActivated">@color/colorAccent</item>
+    <style name="TextLabel" parent="TextAppearance.AppCompat">
+        <!-- Hint color and label color in FALSE state -->
+        <item name="android:textColorHint">@color/colorPrimary</item>
+        <item name="android:textSize">20sp</item>
+        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+        <item name="colorAccent">@color/black</item>
+        <item name="colorControlNormal">@color/grey</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
 
-        </style>
-
-
+    </style>
 
 
-        <style name="SpinnerItemTheme"
-            parent="android:TextAppearance.Widget.TextView.SpinnerItem">
-            <item name="android:textColor">#000000</item>
-        </style>
+    <style name="SpinnerItemTheme" parent="android:TextAppearance.Widget.TextView.SpinnerItem">
+        <item name="android:textColor">#000000</item>
+    </style>
 
 
+    <style name="simpletooltip_default" parent="@android:style/TextAppearance.Medium"></style>
 
-        <style name="simpletooltip_default" parent="@android:style/TextAppearance.Medium"></style>
+    <style name="radionbutton" parent="Base.Widget.AppCompat.CompoundButton.RadioButton">
 
-        <style name="radionbutton"   parent="Base.Widget.AppCompat.CompoundButton.RadioButton">
-
-            <item name="android:windowIsTranslucent">true</item>
-            <item name="android:windowBackground">@android:color/transparent</item>
-            <item name="android:windowContentOverlay">@null</item>
-            <item name="android:windowNoTitle">true</item>
-            <item name="android:windowIsFloating">false</item>
-            <item name="android:backgroundDimEnabled">true</item>
-        </style>
-
-
-        <string name="discreteSeekBarStyle"/>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
 
 
-    </resources>
+    <string name="discreteSeekBarStyle" />
+
+    <style name="AppTheme.NoActionBar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.NoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+</resources>
 
 

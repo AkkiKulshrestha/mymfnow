@@ -52,11 +52,15 @@
         <activity
             android:name=".CalculatorDashboard"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme"/>
 
 
 
 
+        <activity
+            android:name=".Home"
+            android:label="@string/title_activity_home"
+             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
