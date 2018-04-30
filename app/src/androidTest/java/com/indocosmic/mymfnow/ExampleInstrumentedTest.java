@@ -7,7 +7,8 @@ import android.support.test.runner.AndroidJUnit4;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static org.junit.Assert.*;
+import static junit.framework.Assert.assertEquals;
+
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -23,4 +24,6 @@ public class ExampleInstrumentedTest {
 
         assertEquals("com.indocosmic.mymfnow", appContext.getPackageName());
     }
+
+
 }

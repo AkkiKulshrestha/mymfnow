@@ -59,8 +59,12 @@ public class SplashActivity extends AppCompatActivity {
 
     private void force_update() {
         int currentVersionCode = getCurrentVersion();
+        String VersionCode = "1";
+
+        update_dialog(VersionCode);
+
         //Log.d("Current version = ",currentVersionCode);
-        final String get_latest_version_info = RestClient.ROOT+"/appupdate/getLatestUpdateVersion";
+        /*final String get_latest_version_info = RestClient.ROOT+"/appupdate/getLatestUpdateVersion";
         Log.d("URL --->", get_latest_version_info);
         try {
             ConnectionDetector cd = new ConnectionDetector(this);
@@ -76,7 +80,6 @@ public class SplashActivity extends AppCompatActivity {
                             String VersionCode = Jobj.getString("VersionCode");
                             String VersionName = Jobj.getString("VersionName");
                             Force_Update_flag = Jobj.getString("IsForceUpdate");
-                            update_dialog(VersionCode);
 
                             Log.d("Latest version:",latestVersion);
                         } catch (Exception e) {
@@ -88,16 +91,16 @@ public class SplashActivity extends AppCompatActivity {
                     public void onErrorResponse(VolleyError volleyError) {
                         volleyError.printStackTrace();
                         Log.d("Vollley Err", volleyError.toString());
-                       /* if(volleyError.toString().equalsIgnoreCase("com.android.volley.ServerError")){
+                       *//* if(volleyError.toString().equalsIgnoreCase("com.android.volley.ServerError")){
                             Intent i = new Intent(getApplicationContext(),MaintainancePage.class);
                             startActivity(i);
                             overridePendingTransition(R.animator.move_left,R.animator.move_right);
-                        }*/
+                        }*//*
                     }
                 });
-               /* int socketTimeout = 50000;//30 seconds - change to what you want
+               *//* int socketTimeout = 50000;//30 seconds - change to what you want
                 RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
-                stringRequest.setRetryPolicy(policy);*/
+                stringRequest.setRetryPolicy(policy);*//*
                 RequestQueue requestQueue = Volley.newRequestQueue(this);
                 requestQueue.add(stringRequest);
             }else {
@@ -106,7 +109,7 @@ public class SplashActivity extends AppCompatActivity {
         }catch (Exception ex)
         {
             ex.printStackTrace();
-        }
+        }*/
     }
 
     private int getCurrentVersion(){
