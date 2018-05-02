@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Swiper demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="css/swiper.min.css">
+
+    <!-- Demo styles -->
+    <style>
+    html, body {
+      position: relative;
+      height: 100%;
+    }
+    body {
+      background: #eee;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color:#000;
+      margin: 0;
+      padding: 0;
+    }
+    .swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: inline;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+    }
+
+    .swiper-pagination-bullet-active {
+        opacity: 1;
+        background: #698c07 !important;
+
+    }
+
+    .firstSec{
+        background-color: #698c07;
+        height: 70%;
+        margin: 0px !important;
+        padding: 5px;
+    }
+
+    .secondSec{
+        background-color: #fff;
+        height: 22%;
+        margin: 0px !important;
+         padding: 10px;
+    }
+
+    .firstSec1{
+        background-color: #698c07;
+        height: 45%;
+        margin: 0px !important;
+        padding: 10px;
+    }
+
+    .secondSec1{
+        background-color: #fff;
+        height: 45%;
+        margin: 0px !important;
+         padding: 10px;
+    }
+
+    .firstSec5{
+        background-color: #698c07;
+        height: 55%;
+        margin: 0px !important;
+        padding: 10px;
+    }
+
+    .secondSec6{
+        background-color: #fff;
+        height: 35%;
+        margin: 0px !important;
+         padding: 10px;
+    }
+
+    .paragrphText{
+        color :#fff;
+        text-align: left;
+        font-size: 12px;
+        display: inherit;
+    }
+
+    .paragrphTextSaving{
+        color :#fff;
+        text-align: left;
+        font-size: 16px;
+        display: inherit;
+    }
+
+     .paragrphText2{
+        color :#fff;
+        text-align: center;
+        font-size: 10px;
+        display: inherit;
+    }
+
+
+    .paragrphTextBlack{
+        color :#000;
+        text-align: left;
+        font-size: 12px;
+        display: inherit;
+        padding: 5px;
+    }
+
+
+    .titleTextBlack{
+            font-size: 18px;
+            font-weight: bold;
+            color: black;
+            text-align: center;
+            display: inherit;
+            padding:5px;
+        }
+
+
+        #block_container {
+        display: flex;
+        justify-content: center;
+        }
+
+        #block_container1 {
+        display: flex;
+        justify-content: center;
+        }
+
+        .foo {
+        text-align: center;
+        width: 100%;
+        }
+
+        .foo:before{
+          display: inline-block;
+          vertical-align: middle;
+        }
+
+         #legendDivOverview {
+           display: inline-block;
+           vertical-align: middle;
+           color: #fff;
+            font-weight: bold;
+            font-size: 12px;
+            text-align: center;
+         }
+
+         .ProjectDataSummary{
+            background-color: #80CBC4;
+            font-size: 11px;
+            text-align: left;
+            margin: 7px;
+            color: #fff;
+
+         }
+
+         .DisclaimerTxt{
+            font-size: 10px;
+            text-align: left;
+            margin: 5px;
+            color: #000;
+
+
+         }
+
+        .bar {
+          float: left;
+          margin: 5px;
+        }
+  </style>
+</head>
+<body>
+<!-- Swiper -->
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide" style="">
+            <span class="titleTextBlack">ASSET ALLOCATION</span>
+            <div id="piechartAssetAllocation" style="width: 900px; height: 500px;"></div>
+
+        </div>
+
+        <div class="swiper-slide">
+            <span class="titleTextBlack">OVERVIEW</span>
+            <div id="piechartOverview" style="width: 900px; height: 300px;"></div>
+            <div class="foo" style="margin: 0 auto;">
+                <div id="legendDivOverview" style="width: 100%;">
+                    </div>
+            </div>
+
+
+                </div>
+
+        <div class="swiper-slide">
+            <span class="titleTextBlack">PROJECTED RETURNS</span>
+            <div id="projected_returns_chart" style="height: 240px; margin: 2px;  width: 100%;"></div>
+            <div class="ProjectDataSummary">
+                <p style="padding:2px;">Projected growth of <span id="ProjectedGrowthAmt"></span> Lump Sum over <span id="SpanTimeHorizon"></span> years.</p>
+                <p style="padding:2px;">Invested Amount - <span id="SpanInvestedAmt"></span></p>
+                <p style="padding:2px;">Minimum Expected Growth - <span id="MinimumExpectedAmt"></span></p>
+                <p style="padding:2px;">Expected Growth - <span id="SpanExpectedGrowthAmt"></span></p>
+                <p style="padding:2px;">Maximum Expected Growth - <span id="MaximumExpectedAmt"></span></p>
+            </div>
+            <div class="DisclaimerTxt">
+            <span>Disclaimer :</span>
+            <p>Projections are based on historical returns, therefore, actual returns may vary subject to market risks and cannot be guaranteed. <br />All projections are annual, compounded annually. Your investment till <span id="projected_final_month_year"></span> - <span id="InvestedDisclaimerAmount"></span>. Expected Corpus in <span id="projected_final_month_year1"></span> - <span id="ExpectedDisclaimerAmount"></span></p>
+            </div>
+        </div>
+
+        <div class="swiper-slide">
+            <span class="titleTextBlack">HISTORICAL RETURNS</span>
+            <div id="historical_returns_chart" style="height: 250px; margin: 2px;  width: 100%;"></div>
+            <div class="ProjectDataSummary">
+                <p style="padding:5px;">Historical growth of <span id="HistoricalGrowthAmt"></span> Lump Sum in the last <span id="SpanTimeHorizon1"></span> years.</p>
+            </div>
+
+            </div>
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+</div>
+
+
+
+<!-- Swiper JS -->
+<script src="scripts/swiper.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script type="text/javascript">
+             var ProjectedListArray = [];
+             var HistoricalListArray = [];
+
+            var AssetAllocationEquity = Number(Android.getAssetAllocationEquity());
+            var AssetAllocationDebt = Number(Android.getAssetAllocationDebt());
+
+            var OverViewEquityBalanced = Number(Android.getOverViewEquityBalanced());
+            var OverViewEquityDiversified = Number(Android.getOverViewEquityDiversified());
+            var OverViewEquityMidcap = Number(Android.getOverViewEquityMidcap());
+            var OverViewEquityLargecap = Number(Android.getOverViewEquityLargecap());
+
+
+
+
+             ProjectedListArray = JSON.parse(Android.getProjectedList());
+             HistoricalListArray = JSON.parse(Android.getHistoricalList());
+
+            // Asset Allocation Graph
+                  google.charts.load('current', {'packages':['corechart']});
+                  google.charts.setOnLoadCallback(drawChart);
+
+                  function drawChart() {
+
+                    var data = google.visualization.arrayToDataTable([
+                      ['AllocationType', 'Amount'],
+                      ['Equity', AssetAllocationEquity],
+                      ['Debt', AssetAllocationDebt]
+
+                    ]);
+
+
+
+                var options = {
+                    //title: 'Asset Allocation',
+                    pieHole: 0.4,
+                    legend: { position: 'bottom'},
+                    height: '300',
+                    width: '300',
+                    chartArea: { left: 40, top: 30, width: '80%', height: '80%' },
+                    slices: [{ color: '#535fab' }, { color: '#37b85d' }],
+                    pieSliceTextStyle: { color: 'black' },
+                    backgroundColor: '#FFFFFF',
+                    tooltip:{text: 'percentage'}
+                };
+
+                    var chart = new google.visualization.PieChart(document.getElementById('piechartAssetAllocation'));
+
+                    chart.draw(data, options);
+
+                  }
+
+
+                  // Overview Graph
+                  google.charts.load('current', {'packages':['corechart']});
+                  google.charts.setOnLoadCallback(drawChartOverview);
+
+                  function drawChartOverview() {
+
+                    var dataOverview = google.visualization.arrayToDataTable([
+                      ['Fund Allocation', 'Amount'],
+                      ['Balanced Funds Equity Oriented', OverViewEquityBalanced],
+                      ['Equity Funds Large Cap', OverViewEquityLargecap],
+                      ['Equity Funds Mid and Small Cap', OverViewEquityMidcap],
+                      ['Equity Funds Diversified', OverViewEquityDiversified]
+
+                    ]);
+
+
+
+                var optionsOverview = {
+                    pieHole: 0.4,
+                    legend: 'none',
+                    height: '300',
+                    width: '300',
+                    chartArea: { left: 40, top: 30, width: '80%', height: '80%' },
+                    slices: [{ color: '#535fab' }, { color: '#37b85d' },{ color: '#f58634' }, { color: '#37b85d' }],
+                    pieSliceTextStyle: { color: 'black' },
+                    backgroundColor: '#FFFFFF',
+                    tooltip:{text: 'percentage'}
+                };
+
+                    var chart1 = new google.visualization.PieChart(document.getElementById('piechartOverview'));
+
+                    chart1.draw(dataOverview, optionsOverview);
+
+                  }
+
+
+        // Projected Returns
+        google.charts.load("current", {packages: ['corechart', 'line']});
+        google.charts.setOnLoadCallback(loadProjectedChart);
+
+        function loadProjectedChart() {
+
+
+                var dataProjected = new google.visualization.DataTable();
+                      dataProjected.addColumn('string', 'Year');
+                      dataProjected.addColumn('number', 'Invested Amount');
+                      dataProjected.addColumn('number', 'Minimum Expected Amount');
+                      dataProjected.addColumn('number', 'Expected Amount');
+                      dataProjected.addColumn('number', 'Maximum Expected Amount');
+
+
+
+                    var dataProjectedReturns = [];
+
+                    for (var i = 0; i < ProjectedListArray.length; i++){
+                        dataProjectedReturns.push(
+                        [ProjectedListArray[i]['year'], Number(ProjectedListArray[i]['invested_amount']),Number(ProjectedListArray[i]['minimum_expected_amount']),Number(ProjectedListArray[i]['expected_amount']),Number(ProjectedListArray[i]['maximum_expected_amount'])]
+                        //[ProjectedListArray[i]['year'], Number(ProjectedListArray[i]['minimum_expected_amount'])]
+                        );
+                    }
+
+                    //document.write(dataSpottrNW);
+
+                    dataProjected.addRows(dataProjectedReturns);
+
+                      var optionsProjected = {
+                        hAxis: {
+                          //title: 'Age',
+                          //format: 'MMM y'
+                        },
+                        chartArea: {width: '60%', height: '80%', left: '70',top:'-20%'},
+                        vAxis: {
+                          //title: 'Amount (In Rs.)',
+                          gridlines: {
+                            "count": 20
+                          },
+                          format: 'short'
+                        },
+                        "colors": ['#535fab','#698c07','#f58634','#b4c2c6'],
+                        series: {
+                          1: {curveType: 'function'}
+                        },
+                    legend: { position: 'bottom'}
+
+
+                      };
+
+                      var chart2 = new google.visualization.LineChart(document.getElementById('projected_returns_chart'));
+                      chart2.draw(dataProjected, optionsProjected);
+
+                }
+
+
+        // Historical Returns
+        google.charts.load("current", {packages: ['corechart', 'line']});
+        google.charts.setOnLoadCallback(loadHistoricalChart);
+
+        function loadHistoricalChart() {
+
+
+                var dataHistorical = new google.visualization.DataTable();
+                      dataHistorical.addColumn('date', 'Year');
+                      dataHistorical.addColumn('number', 'Invested Amount');
+                      dataHistorical.addColumn('number', 'Fixed Deposit');
+                      dataHistorical.addColumn('number', 'Growth');
+
+
+
+                    var dataHistoricalReturns = [];
+
+                    for (var i = 0; i < HistoricalListArray.length; i++){
+                        dataHistoricalReturns.push(
+                        [new Date(HistoricalListArray[i]['year'],1,1), Number(HistoricalListArray[i]['invested_amount']),Number(HistoricalListArray[i]['fd_amount']),Number(HistoricalListArray[i]['growth_amount'])]
+                        );
+                    }
+
+
+                    dataHistorical.addRows(dataHistoricalReturns);
+                        var dateFormatter = new google.visualization.DateFormat({
+                        pattern: 'yyyy'
+                        });
+                        dateFormatter.format(dataHistorical, 0);
+                      var optionsHistoricalG = {
+                        hAxis: {
+                          //title: 'Age',
+                          //format: 'MMM y'
+                        },
+                        chartArea: {width: '60%', height: '70%', left: '70'},
+                        vAxis: {
+                          //title: 'Amount (In Rs.)',
+                          gridlines: {
+                            "count": 20
+                          },
+                          format: 'short'
+                        },
+                        "colors": ['#535fab','#f58634','#698c07'],
+                        series: {
+                          1: {curveType: 'function'}
+                        },
+                        //legend: { position: "top"}
+                    legend: { position: 'bottom'}
+
+                      };
+
+                      var chart3 = new google.visualization.LineChart(document.getElementById('historical_returns_chart'));
+                      chart3.draw(dataHistorical, optionsHistoricalG);
+
+                }
+    </script>
+
+<!-- Initialize Swiper -->
+<script>
+
+       function filterNumberToWordFormat(input){
+        if(input< 0){
+        var val = Math.abs(input)
+
+	                if (val >= 10000000) {
+	                    val = '-' + (val / 10000000).toFixed(2) + ' Crs';
+	                    return val;
+	                } else if (val >= 100000) {
+	                    val = '-' + (val / 100000).toFixed(2) + ' Lacs';
+	                    return val;
+	                }
+	                    /*else if(val >= 1000) val = (val/1000).toFixed(2) + ' K';*/
+	                else {
+	                    var currencySymbol = '';
+	                    //var output = Number(input).toLocaleString('en-IN');   <-- This method is not working fine in all browsers!
+	                    var result = input.toString().split('.');
+
+	                    var lastThree = result[0].substring(result[0].length - 3);
+	                    var otherNumbers = result[0].substring(0, result[0].length - 3);
+	                    if (otherNumbers != '')
+	                        lastThree = ',' + lastThree;
+	                    var output = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
+
+	                    if (result.length > 1) {
+	                        output += "." + result[1];
+	                    }
+
+	                    return currencySymbol + output;
+	                }
+	      }else {
+	                    var val = Math.abs(input)
+                        if (val >= 10000000) {
+                            val = (val / 10000000).toFixed(2) + ' Crs';
+                            return val;
+                        } else if (val >= 100000) {
+                            val = (val / 100000).toFixed(2) + ' Lacs';
+                            return val;
+                        }
+                            /*else if(val >= 1000) val = (val/1000).toFixed(2) + ' K';*/
+                        else {
+                            var currencySymbol = '';
+                            //var output = Number(input).toLocaleString('en-IN');   <-- This method is not working fine in all browsers!
+                            var result = input.toString().split('.');
+
+                            var lastThree = result[0].substring(result[0].length - 3);
+                            var otherNumbers = result[0].substring(0, result[0].length - 3);
+                            if (otherNumbers != '')
+                                lastThree = ',' + lastThree;
+                            var output = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
+
+                            if (result.length > 1) {
+                                output += "." + result[1];
+                            }
+
+                            return currencySymbol + output;
+                        }
+
+	      }
+      }
+
+
+            var Projected_InvestedAmount = Number(Android.getProjected_InvestedAmount());
+            var Projected_TimeHorizon = Number(Android.getProjected_TimeHorizon());
+            var Projected_ExpectedReturnAmount = Number(Android.getProjected_ExpectedReturnAmount()).toFixed(0);
+            var Projected_FinalMonthYear = Android.getProjected_FinalMonthYear();
+
+            var Projected_Minimum_Return_Per = Number(Android.getProjected_Minimum_Return_Per());
+            var Projected_Median_Return_Per = Number(Android.getProjected_Median_Return_Per());
+            var Projected_Maximum_Return_Per = Number(Android.getProjected_Maximum_Return());
+
+            var Projected_Minimum_ReturnAmount = Number(Android.getProjected_Minimum_ReturnAmount()).toFixed(0);
+            var Projected_Maximum_ReturnAmount = Number(Android.getProjected_Maximum_ReturnAmount()).toFixed(0);
+
+                        // Legend of Overview Graph
+            var divOverview = document.getElementById('legendDivOverview');
+
+            divOverview.innerHTML += "<div class=\"bar\" style=\"width: 28%;\"><span style=\"padding: 2px; color: #535fab; font-weight:bold; font-size: medium;\"></span><br/><span style=\"padding: 2px; color: #535fab; font-weight:normal; font-size: 13px;\">Balanced Funds Equity Oriented</span></div>";
+            divOverview.innerHTML += "<div class=\"bar\" style=\"width: 28%;\"><span style=\"padding: 2px; color: #37b85d; font-weight:bold; font-size: medium;\"></span><br/><span style=\"padding: 2px; color: #37b85d; font-weight:normal; font-size: 13px;\">Equity Funds Large Cap</span></div>";
+            divOverview.innerHTML += "<div class=\"bar\" style=\"width: 28%;\"><span style=\"padding: 2px; color: #f58634; font-weight:bold; font-size: medium;\"></span><br/><span style=\"padding: 2px; color: #f58634; font-weight:normal; font-size: 13px;\">Equity Funds Mid and Small Cap</span></div>";
+            divOverview.innerHTML += "<div class=\"bar\" style=\"width: 28%;\"><span style=\"padding: 2px; color: #37b85d; font-weight:bold; font-size: medium;\"></span><br/><span style=\"padding: 2px; color: #37b85d; font-weight:normal; font-size: 13px;\">Equity Funds Diversified</span></div>";
+
+
+                // Text Below Graph Projected List
+            document.getElementById('ProjectedGrowthAmt').innerHTML = '₹ ' + filterNumberToWordFormat(Projected_InvestedAmount);
+            document.getElementById('SpanTimeHorizon').innerHTML =  Projected_TimeHorizon;
+
+            document.getElementById('SpanInvestedAmt').innerHTML = '₹ ' + filterNumberToWordFormat(Projected_InvestedAmount);
+            document.getElementById('MinimumExpectedAmt').innerHTML = '₹ ' + filterNumberToWordFormat(Projected_Minimum_ReturnAmount);
+            document.getElementById('SpanExpectedGrowthAmt').innerHTML = '₹ ' + filterNumberToWordFormat(Projected_ExpectedReturnAmount);
+            document.getElementById('MaximumExpectedAmt').innerHTML = '₹ ' + filterNumberToWordFormat(Projected_Maximum_ReturnAmount);
+
+            document.getElementById('projected_final_month_year').innerHTML = Projected_FinalMonthYear;
+            document.getElementById('projected_final_month_year1').innerHTML = Projected_FinalMonthYear;
+            document.getElementById('InvestedDisclaimerAmount').innerHTML = '₹ ' + filterNumberToWordFormat(Projected_InvestedAmount);
+            document.getElementById('ExpectedDisclaimerAmount').innerHTML = '₹ ' + filterNumberToWordFormat(Projected_ExpectedReturnAmount);
+
+            document.getElementById('HistoricalGrowthAmt').innerHTML = '₹ ' + filterNumberToWordFormat(Projected_InvestedAmount);
+            document.getElementById('SpanTimeHorizon1').innerHTML =  Projected_TimeHorizon;
+
+
+
+    var swiper = new Swiper('.swiper-container', {
+      spaceBetween: 30,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+
+
+  </script>
+
+</body>
+</html>

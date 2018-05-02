@@ -54,6 +54,16 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"/>
 
+        <activity
+            android:name=".RoboDashboard"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+
+        <activity
+            android:name=".RoboLumpsum"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+
 
 
 

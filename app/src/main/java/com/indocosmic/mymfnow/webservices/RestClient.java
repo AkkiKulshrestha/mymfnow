@@ -4,7 +4,7 @@ public class RestClient
 	{
 		private static API REST_CLIENT;
 
-		public static String ROOT = "http://13.126.98.215:8081/finpinapi/api/v3";
+		public static String ROOT = "http://www.mymfnow.com/api";
 
 		public static String URLProd = "https://www.finpin.in";
 

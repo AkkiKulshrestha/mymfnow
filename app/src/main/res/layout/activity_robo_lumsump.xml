@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/browser_actions_divider_color">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/btn_color_yellow">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="LUMPSUM INVESTMENT ROBO ADVISOR"
+                    android:textAllCaps="true"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:layout_margin="5dp"/>
+
+            </LinearLayout>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_weight="5"
+                android:layout_margin="5dp"
+                app:cardBackgroundColor="#ffffff">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="10">
+                        <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="I am "
+                        android:textSize="14sp"
+                        android:layout_weight="3"
+                        android:layout_gravity="center"
+                        android:gravity="center|end"
+                        android:textAlignment="viewEnd"
+                        android:layout_marginStart="5dp"/>
+                        <EditText
+                            android:id="@+id/EdtAge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10sp"
+                            android:hint="Age"
+                            android:textColorHint="@color/grey"
+                            android:maxLength="2"
+                            android:textSize="16sp"
+                            android:inputType="number"
+                            android:imeOptions="actionNext"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:layout_weight="4"
+                            android:textColor="@color/colorPrimary"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="years old and"
+                    android:textSize="14sp"
+                    android:layout_weight="3"
+                    android:gravity="center|start"
+                    android:layout_gravity="center"
+                    android:textAlignment="viewStart"
+                    android:layout_marginStart="5dp"/>
+            </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:weightSum="10">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="I want to invest Rs. "
+                            android:textSize="14sp"
+                            android:layout_weight="3"
+                            android:layout_gravity="center"
+                            android:gravity="center|end"
+                            android:textAlignment="viewEnd"
+                            android:layout_marginStart="5dp"/>
+                        <EditText
+                            android:id="@+id/EdtAmountLumpsum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10sp"
+                            android:hint="Amount"
+                            android:textColorHint="@color/grey"
+                            android:maxLength="15"
+                            android:textSize="16sp"
+                            android:inputType="number"
+                            android:imeOptions="actionNext"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:layout_weight="7"
+                            android:textColor="@color/colorPrimary"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:weightSum="10">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="for time horizon of "
+                            android:textSize="14sp"
+                            android:layout_weight="3"
+                            android:layout_gravity="center"
+                            android:gravity="center|end"
+                            android:textAlignment="viewEnd"
+                            android:layout_marginStart="5dp"/>
+                        <EditText
+                            android:id="@+id/EdtNo_Of_Years"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10sp"
+                            android:hint="No. of years"
+                            android:textColorHint="@color/grey"
+                            android:maxLength="2"
+                            android:textSize="16sp"
+                            android:inputType="number"
+                            android:imeOptions="actionDone"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:layout_weight="4"
+                            android:textColor="@color/colorPrimary"/>
+
+                        <TextView
+                            android:id="@+id/textView2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="5dp"
+                            android:layout_weight="3"
+                            android:gravity="center|start"
+                            android:text="years."
+                            android:textAlignment="viewStart"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:weightSum="10">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="My Risk Tolerance is  "
+                            android:textSize="14sp"
+                            android:layout_weight="3"
+                            android:layout_gravity="center"
+                            android:gravity="center|end"
+                            android:textAlignment="viewEnd"
+                            android:layout_marginStart="5dp"/>
+                        <Spinner
+                            android:id="@+id/Spn_RiskProfile"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10sp"
+                            android:textColorHint="@color/grey"
+                            android:maxLength="20"
+                            android:textSize="16sp"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:layout_weight="7"
+                            android:textColor="@color/colorPrimary"/>
+
+                    </LinearLayout>
+                <Button
+                    android:id="@+id/BtnBuildMyPlan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Build my Plan"
+                    android:textColor="@color/white"
+                    android:background="@color/colorPrimaryLight"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/CardPlanCreated"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_weight="5"
+                android:layout_margin="5dp"
+                app:cardBackgroundColor="#ffffff">
+
+                <Button
+                    android:id="@+id/BtnViewResult"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/primary_green"
+                    android:text="View Results"
+                    android:textColor="@color/white"/>
+
+            </android.support.v7.widget.CardView>
+
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

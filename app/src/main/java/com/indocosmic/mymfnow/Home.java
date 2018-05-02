@@ -136,6 +136,9 @@ public class Home extends AppCompatActivity
                 if (selected.equalsIgnoreCase("Calculator")) {
 
                     startActivity(new Intent(getApplicationContext(),CalculatorDashboard.class));
+                }else if (selected.equalsIgnoreCase("Robo Advisor")) {
+
+                    startActivity(new Intent(getApplicationContext(),RoboDashboard.class));
                 }
 
                 return true;
