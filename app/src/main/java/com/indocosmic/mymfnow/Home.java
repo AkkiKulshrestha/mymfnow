@@ -5,12 +5,15 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.content.Intent;
+
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,8 +31,10 @@ import com.indocosmic.mymfnow.fragments.Portfolio;
 import com.indocosmic.mymfnow.fragments.PortfolioAnalysis;
 import com.indocosmic.mymfnow.fragments.SIPSchemes;
 import com.indocosmic.mymfnow.mutualFundManualFragmet.FreshPurchase;
+import com.indocosmic.mymfnow.mutualFundManualFragmet.FreshPurchaseWithSIP;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,6 +48,7 @@ public class Home extends AppCompatActivity
     Map<String, List<String>> dataCollection;
 
     FragmentManager fragmentManager;
+    DrawerLayout drawer;
 
 
     @Override
@@ -50,10 +56,9 @@ public class Home extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ImageButton menuLeft = (ImageButton) findViewById(R.id.menuLeft);
         ImageButton menuRight = (ImageButton) findViewById(R.id.menuRight);
-
 
 
         menuLeft.setOnClickListener(new View.OnClickListener() {
@@ -77,6 +82,7 @@ public class Home extends AppCompatActivity
                 }
             }
         });
+
 
 
         NavigationView navigationView1 = (NavigationView) findViewById(R.id.nav_view);
@@ -131,19 +137,19 @@ public class Home extends AppCompatActivity
             @Override
             public boolean onGroupClick(ExpandableListView expandableListView, View view, int position, long l) {
 
-                final String selected = (String) expListAdapter.getGroup(position);
+                String parent_name = (String) expListAdapter.getGroup(position);
 
-                if (selected.equalsIgnoreCase("Calculator")) {
+                if (parent_name.equalsIgnoreCase("Calculator")) {
 
                     startActivity(new Intent(getApplicationContext(),CalculatorDashboard.class));
-                }else if (selected.equalsIgnoreCase("Robo Advisor")) {
-
+                }else if (parent_name.equalsIgnoreCase("Robo Advisor")) {
                     startActivity(new Intent(getApplicationContext(),RoboDashboard.class));
                 }
 
-                return true;
+                return false;
             }
         });
+
 
 
         expandableList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
@@ -152,6 +158,7 @@ public class Home extends AppCompatActivity
                                         int groupPosition, int childPosition, long id) {
 
                 final String selected = (String) expListAdapter.getChild(groupPosition, childPosition);
+
 
                 Fragment fragment = null;
                 Class fragmentClass = null;
@@ -165,11 +172,11 @@ public class Home extends AppCompatActivity
 
                     fragmentClass = SIPSchemes.class;
                 }else if (selected.equalsIgnoreCase("Fresh Purchase")){
-//                    Toast.makeText(getBaseContext(), selected, Toast.LENGTH_LONG)
-//                            .show();
-                    fragmentClass = FreshPurchase.class;
-                }
 
+                    fragmentClass = FreshPurchase.class;
+                }else if (selected.equalsIgnoreCase("Fresh Purchase With SIP")){
+                    fragmentClass = FreshPurchaseWithSIP.class;
+                }
 
                 try {
                         fragment = (Fragment) fragmentClass.newInstance();
@@ -181,11 +188,22 @@ public class Home extends AppCompatActivity
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.mainFragment, fragment).commit();
 
+
                 drawer.closeDrawer(GravityCompat.START);
                 drawer.closeDrawer(Gravity.END);
                 return true;
             }
         });
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (drawer.isDrawerOpen(GravityCompat.START) || drawer.isDrawerOpen(Gravity.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+            drawer.closeDrawer(GravityCompat.END);
+        }
     }
 
     private void selectDashBoardFragment() {
@@ -244,10 +262,14 @@ public class Home extends AppCompatActivity
         }
     }
 
-    private void loadChild(String[] laptopModels) {
+    private void loadChild(String[] groupModels) {
+
         childList = new ArrayList<String>();
-        for (String model : laptopModels)
-            childList.add(model);
+        Collections.addAll(childList, groupModels);
+//        childList.addAll(laptopModels);
+//
+//        for (String model : laptopModels)
+//            childList.add(model);
     }
 
 

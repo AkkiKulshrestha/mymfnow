@@ -7,7 +7,7 @@ import android.widget.ImageView;
 
 public class CalculatorDashboard extends AppCompatActivity {
 
-   // ImageView back_btn;
+    ImageView back_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,20 +19,13 @@ public class CalculatorDashboard extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        //init();
-
-    }
-
-    private void init() {
-
-     //   back_btn = (ImageView) findViewById(R.id.back_btn);
-
     }
 
 
     @Override
-    public boolean onNavigateUp() {
+    public boolean onSupportNavigateUp() {
         finish();
         return true;
     }
+
 }

@@ -125,7 +125,7 @@
 </LinearLayout>
 
 
-                <LinearLayout
+    <LinearLayout
         android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -209,17 +209,17 @@
 
     </LinearLayout>
 
-                 <WebView
+    <WebView
         android:id="@+id/graph"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:minHeight="200sp"
+        android:minHeight="200dp"
         android:layout_marginBottom="4dp">
 
     </WebView>
 
 
-            <android.support.v7.widget.RecyclerView
+     <android.support.v7.widget.RecyclerView
         android:id="@+id/mutual_fund_detail_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

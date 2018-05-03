@@ -8,67 +8,6 @@
     <string name="date">22 Oct 2015</string>
     <string name="selected_item">Selected item</string>
 
-    <string-array name="nav_drawer_labels">
-        <item>Mutual Funds</item>
-        <item>Mutual Funds Manual</item>
-        <item>Transact Online</item>
-        <item>My Goals</item>
-        <item>Robo Advisor</item>
-        <item>Calculator</item>
-    </string-array>
-
-    <string-array name="elements_mutual_funds">
-        <item>Portfolio</item>
-        <item>Portfolio Analysis</item>
-        <item>SIP Schemes</item>
-        <item>All Transactions</item>
-        <item>Month Wise Transactions</item>
-        <item>Dividend History</item>
-        <item>Tax Report</item>
-        <item>Funds Performance</item>
-    </string-array>
-
-    <string-array name="elements_mutual_fund_manual">
-        <item>Fresh Purchase</item>
-        <item>Fresh Purchase With SIP</item>
-        <item>Additional Purchase</item>
-        <item>Redemption</item>
-        <item>Systematic Withdrawal Plan</item>
-        <item>Systematic Transfer Plan</item>
-        <item>Switch</item>
-        <item>Edit Transactions</item>
-    </string-array>
-
-    <string-array name="elements_transact_online">
-        <item>Lumpsum Investment</item>
-        <item>Purchase With Existing Folio</item>
-        <item>NFO Purchase</item>
-        <item>SIP Investment</item>
-        <item>Redemption</item>
-        <item>Switch</item>
-        <item>STP</item>
-        <item>SWP</item>
-    </string-array>
-
-    <string-array name="elements_my_goal">
-        <!--<item>Create Your Goal</item>-->
-        <!--<item>Track Your Goal</item>-->
-        <!--<item>Goal Based Online Investment</item>-->
-    </string-array>
-
-    <string-array name="elements_robo_advisor">
-        <!--<item>Lumpsum Robo</item>-->
-        <!--<item>SIP Robo</item>-->
-        <!--<item>Robo Saved Plans</item>-->
-        <!--<item>Robo Based Online Investment</item>-->
-    </string-array>
-
-    <string-array name="elements_calculator">
-        <!--<item>Lumpsum Robo</item>-->
-        <!--<item>SIP Robo</item>-->
-        <!--<item>Robo Saved Plans</item>-->
-        <!--<item>Robo Based Online Investment</item>-->
-    </string-array>
 
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -87,4 +26,12 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="every_new_release_is_better_than_the_last">Every new release is better than the last, so why lag behind. Upgrade now and enjoy the best version yet!</string>
     <string name="hint_scheme_name">Type Scheme Name</string>
+    <string name="hint_amount">Amount</string>
+    <string name="hint_SIP_amount">SIP Amount</string>
+    <string name="hint_units">Units</string>
+    <string name="hint_purchase_date">Type Purchase Date</string>
+    <string name="hint_NAV_Value">NAV Value</string>
+    <string name="hint_Folio_Number">Folio Number</string>
+    <string name="hint_broker_code">Broker Code (ARN Number)</string>
+    <string name="txt_amount_units">Select Amount / Units</string>
 </resources>

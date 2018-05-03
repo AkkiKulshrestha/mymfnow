@@ -1,3 +1,4 @@
+/*
 package com.indocosmic.mymfnow;
 
 import android.content.Context;
@@ -7,17 +8,21 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+*/
 /**
  * Created by msahakyan on 22/10/15.
- */
+ *//*
+
 public class ExpandableListDataSource {
 
-    /**
+    */
+/**
      * Returns fake data of films
      *
      * @param context
      * @return
-     */
+     *//*
+
 
         public static Map<String, List<String>> getData(Context context) {
 
@@ -42,3 +47,4 @@ public class ExpandableListDataSource {
             return expandableListData;
     }
 }
+*/
