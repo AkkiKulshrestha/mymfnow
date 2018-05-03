@@ -159,8 +159,8 @@
            vertical-align: middle;
            color: #fff;
             font-weight: bold;
-            font-size: 12px;
-            text-align: center;
+            font-size: 10px;
+            text-align: left;
          }
 
          .ProjectDataSummary{
@@ -436,7 +436,7 @@
                           1: {curveType: 'function'}
                         },
                         //legend: { position: "top"}
-                    legend: { position: 'bottom'}
+                       legend: { position: 'bottom'}
 
                       };
 
@@ -524,11 +524,24 @@
 
                         // Legend of Overview Graph
             var divOverview = document.getElementById('legendDivOverview');
+            var OverViewEquityBalanced = Number(Android.getOverViewEquityBalanced());
+            var OverViewEquityDiversified = Number(Android.getOverViewEquityDiversified());
+            var OverViewEquityMidcap = Number(Android.getOverViewEquityMidcap());
+            var OverViewEquityLargecap = Number(Android.getOverViewEquityLargecap());
+               if(OverViewEquityBalanced!=0){
+                    divOverview.innerHTML += "<div class=\"bar\" style=\"width: 28%;\"><span style=\"padding: 2px; color: #535fab; font-weight:bold; font-size: medium;\"></span><br/><span style=\"padding: 2px; color: #535fab; font-weight:normal; font-size: 13px;\">Balanced Funds Equity Oriented</span></div>";
+                }
 
-            divOverview.innerHTML += "<div class=\"bar\" style=\"width: 28%;\"><span style=\"padding: 2px; color: #535fab; font-weight:bold; font-size: medium;\"></span><br/><span style=\"padding: 2px; color: #535fab; font-weight:normal; font-size: 13px;\">Balanced Funds Equity Oriented</span></div>";
-            divOverview.innerHTML += "<div class=\"bar\" style=\"width: 28%;\"><span style=\"padding: 2px; color: #37b85d; font-weight:bold; font-size: medium;\"></span><br/><span style=\"padding: 2px; color: #37b85d; font-weight:normal; font-size: 13px;\">Equity Funds Large Cap</span></div>";
-            divOverview.innerHTML += "<div class=\"bar\" style=\"width: 28%;\"><span style=\"padding: 2px; color: #f58634; font-weight:bold; font-size: medium;\"></span><br/><span style=\"padding: 2px; color: #f58634; font-weight:normal; font-size: 13px;\">Equity Funds Mid and Small Cap</span></div>";
-            divOverview.innerHTML += "<div class=\"bar\" style=\"width: 28%;\"><span style=\"padding: 2px; color: #37b85d; font-weight:bold; font-size: medium;\"></span><br/><span style=\"padding: 2px; color: #37b85d; font-weight:normal; font-size: 13px;\">Equity Funds Diversified</span></div>";
+                if(OverViewEquityLargecap!=0){
+                    divOverview.innerHTML += "<div class=\"bar\" style=\"width: 28%;\"><span style=\"padding: 2px; color: #37b85d; font-weight:bold; font-size: medium;\"></span><br/><span style=\"padding: 2px; color: #37b85d; font-weight:normal; font-size: 13px;\">Equity Funds Large Cap</span></div>";
+                }
+
+                if(OverViewEquityMidcap!=0){
+                    divOverview.innerHTML += "<div class=\"bar\" style=\"width: 28%;\"><span style=\"padding: 2px; color: #f58634; font-weight:bold; font-size: medium;\"></span><br/><span style=\"padding: 2px; color: #f58634; font-weight:normal; font-size: 13px;\">Equity Funds Mid and Small Cap</span></div>";
+                }
+                if(OverViewEquityDiversified!=0){
+                    divOverview.innerHTML += "<div class=\"bar\" style=\"width: 28%;\"><span style=\"padding: 2px; color: #37b85d; font-weight:bold; font-size: medium;\"></span><br/><span style=\"padding: 2px; color: #37b85d; font-weight:normal; font-size: 13px;\">Equity Funds Diversified</span></div>";
+                }
 
 
                 // Text Below Graph Projected List
