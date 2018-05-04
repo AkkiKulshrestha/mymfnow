@@ -363,7 +363,7 @@
                           //title: 'Age',
                           //format: 'MMM y'
                         },
-                        chartArea: {width: '60%', height: '80%', left: '70',top:'-20%'},
+                        chartArea: {width: '60%', height: '80%', left: '70', top:'10%'},
                         vAxis: {
                           //title: 'Amount (In Rs.)',
                           gridlines: {
@@ -395,7 +395,6 @@
                 var dataHistorical = new google.visualization.DataTable();
                       dataHistorical.addColumn('date', 'Year');
                       dataHistorical.addColumn('number', 'Invested Amount');
-                      dataHistorical.addColumn('number', 'Fixed Deposit');
                       dataHistorical.addColumn('number', 'Growth');
 
 
@@ -404,7 +403,7 @@
 
                     for (var i = 0; i < HistoricalListArray.length; i++){
                         dataHistoricalReturns.push(
-                        [new Date(HistoricalListArray[i]['year'],1,1), Number(HistoricalListArray[i]['invested_amount']),Number(HistoricalListArray[i]['fd_amount']),Number(HistoricalListArray[i]['growth_amount'])]
+                        [new Date(HistoricalListArray[i]['year'],1,1), Number(HistoricalListArray[i]['invested_amount']),Number(HistoricalListArray[i]['growth_amount'])]
                         );
                     }
 
@@ -427,7 +426,7 @@
                           },
                           format: 'short'
                         },
-                        "colors": ['#535fab','#f58634','#698c07'],
+                        "colors": ['#535fab','#698c07'],
                         series: {
                           1: {curveType: 'function'}
                         },
@@ -436,7 +435,7 @@
 
                       };
 
-                      var chart3 = new google.visualization.LineChart(document.getElementById('historical_returns_chart'));
+                      var chart3 = new google.visualization.AreaChart(document.getElementById('historical_returns_chart'));
                       chart3.draw(dataHistorical, optionsHistoricalG);
 
                 }
