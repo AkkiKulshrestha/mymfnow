@@ -44,6 +44,11 @@
             android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity
+            android:name=".Home"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
             android:name=".MainPortalDashboard"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"/>
@@ -71,9 +76,18 @@
             android:windowSoftInputMode="stateHidden"/>
 
         <activity
-            android:name=".Home"
-            android:label="@string/title_activity_home"
-             android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".robo_planning.RoboOnlineInvestment"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden"/>
+
+        <activity
+            android:name=".robo_planning.RoboSavedPlans"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden"/>
+
+
     </application>
 
 </manifest>

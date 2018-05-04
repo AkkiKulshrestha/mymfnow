@@ -15,7 +15,7 @@ import com.indocosmic.mymfnow.R;
 
 public class RoboDashboard extends AppCompatActivity{
 
-    CardView CardLumpsumRobo,CardSIP_Robo;
+    CardView CardLumpsumRobo,CardSIP_Robo,CardRoboSavedPlans,CardRoboOnlineInvestment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +51,28 @@ public class RoboDashboard extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(),RoboSIP.class);
+                startActivity(i);
+                overridePendingTransition(R.animator.move_left,R.animator.move_right);
+                finish();
+            }
+        });
+
+        CardRoboSavedPlans = (CardView)findViewById(R.id.CardRoboSavedPlans);
+        CardRoboSavedPlans.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),RoboSavedPlans.class);
+                startActivity(i);
+                overridePendingTransition(R.animator.move_left,R.animator.move_right);
+                finish();
+            }
+        });
+
+        CardRoboOnlineInvestment = (CardView)findViewById(R.id.CardRoboOnlineInvestment);
+        CardRoboOnlineInvestment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),RoboOnlineInvestment.class);
                 startActivity(i);
                 overridePendingTransition(R.animator.move_left,R.animator.move_right);
                 finish();

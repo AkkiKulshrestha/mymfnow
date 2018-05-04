@@ -450,11 +450,6 @@ public class RoboSIP extends AppCompatActivity {
 
     }
 
-
-
-
-
-
     private class WebAppInterfaceMultiCardDataLumpSumRobo{
 
         /*,,;
