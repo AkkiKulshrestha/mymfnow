@@ -65,9 +65,7 @@ public class FreshPurchaseWithSIP extends Fragment implements View.OnClickListen
         edt_FirstinvestmentDate = (EditText) rootView.findViewById(R.id.edt_FirstinvestmentDate);
         edt_SIPStartDate = (EditText) rootView.findViewById(R.id.edt_SIPStartDate);
         edt_SIPEndDate = (EditText) rootView.findViewById(R.id.edt_SIPEndDate);
-       // frequencySpinner = (MaterialSpinner) rootView.findViewById(R.id.frequencySpinner);
-        //adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, ITEMS);
-        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
     }
 
     private void setDateTimeField() {

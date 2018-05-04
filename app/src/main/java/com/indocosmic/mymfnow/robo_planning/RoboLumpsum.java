@@ -172,6 +172,7 @@ public class RoboLumpsum extends AppCompatActivity{
         myDialog.setCancelable(false);
         myDialog.setCanceledOnTouchOutside(false);
         myDialog.show();
+
         String URL_Robo_Lumpsum = RestClient.ROOT_URL + "/robo/getRoboAdvisor";
         try {
             Log.d("URL",URL_Robo_Lumpsum);

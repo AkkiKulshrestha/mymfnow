@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.indocosmic.mymfnow.myGoals.MyGoalsActivity"
+    android:weightSum="9"
+    android:orientation="vertical">
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/create_goal_card"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="8dp"
+        app:cardBackgroundColor="#56bc64">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create Your Goal"
+            android:textColor="@color/white"
+            android:padding="10sp"
+            android:layout_gravity="bottom|end"
+            android:gravity="end"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_marginBottom="10sp"
+            android:layout_marginEnd="20sp"/>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/track_your_goal_card"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="8dp"
+        app:cardBackgroundColor="#ffb742">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Track Your Goal"
+            android:textColor="@color/white"
+            android:padding="10sp"
+            android:layout_gravity="bottom|end"
+            android:gravity="end"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_marginBottom="10sp"
+            android:layout_marginEnd="20sp"/>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/online_investment_card"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="8dp"
+        app:cardBackgroundColor="#dd33ff">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Goal Based Online Investment"
+            android:textColor="@color/white"
+            android:padding="10sp"
+            android:layout_gravity="bottom|end"
+            android:gravity="end"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_marginBottom="10sp"
+            android:layout_marginEnd="20sp"/>
+
+    </android.support.v7.widget.CardView>
+
+
+
+
+</LinearLayout>

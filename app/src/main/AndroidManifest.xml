@@ -74,18 +74,24 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden"/>
-
         <activity
             android:name=".robo_planning.RoboOnlineInvestment"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden"/>
-
         <activity
             android:name=".robo_planning.RoboSavedPlans"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden"/>
+
+        <activity android:name=".myGoals.MyGoalsActivity"
+            android:theme="@style/AppTheme"/>
+
+        <activity android:name=".myGoals.MyGoalsItemActivity"
+            android:theme="@style/AppTheme"/>
+
+
 
 
     </application>

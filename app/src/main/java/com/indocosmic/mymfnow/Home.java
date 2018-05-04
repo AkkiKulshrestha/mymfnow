@@ -30,6 +30,7 @@ import com.indocosmic.mymfnow.fragments.PortfolioAnalysis;
 import com.indocosmic.mymfnow.fragments.SIPSchemes;
 import com.indocosmic.mymfnow.mutualFundManualFragmet.FreshPurchase;
 import com.indocosmic.mymfnow.mutualFundManualFragmet.FreshPurchaseWithSIP;
+import com.indocosmic.mymfnow.myGoals.MyGoalsActivity;
 import com.indocosmic.mymfnow.robo_planning.RoboDashboard;
 
 import java.util.ArrayList;
@@ -147,7 +148,12 @@ public class Home extends AppCompatActivity
                     startActivity(new Intent(getApplicationContext(),RoboDashboard.class));
                     overridePendingTransition(R.animator.move_left,R.animator.move_right);
                     finish();
+                }else if (parent_name.equalsIgnoreCase("My Goals")) {
+                    startActivity(new Intent(getApplicationContext(),MyGoalsActivity.class));
+                    overridePendingTransition(R.animator.move_left,R.animator.move_right);
+                    finish();
                 }
+
 
                 return false;
             }
