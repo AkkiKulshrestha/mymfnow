@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        android:layout_margin="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+                    <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="10">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="4">
+
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Scheme Name"
+                            android:textColor="@color/black"
+                            android:padding="5dp"
+                            android:layout_margin="5dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/row_scheme_name"
+                            android:padding="5dp"
+                            android:textStyle="bold"
+                            android:text="HDFC Medium Term Opportunities Fund - Growth Option "
+                            android:textColor="@color/primary_light_blue"/>
+
+
+                        <TextView
+                            android:id="@+id/row_changeScheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Change Scheme"
+                            android:textColor="@color/orange"
+                            android:padding="5dp"
+                            android:layout_margin="5dp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="6">
+
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Category"
+                            android:textColor="@color/black"
+                            android:padding="5dp"
+                            android:layout_margin="5dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/row_scheme_category"
+                            android:padding="5dp"
+                            android:textStyle="bold"
+                            android:text="Short Term Debt Funds"
+                            android:textColor="@color/primary_light_blue"/>
+
+
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+                    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="12">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="5">
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Allocation (%)"
+                android:textColor="@color/black"
+                android:padding="5dp"
+                android:layout_margin="5dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/row_edt_allocation_per"
+                android:padding="10sp"
+                android:textStyle="bold"
+                android:hint="% Allocated"
+                android:inputType="number"
+                android:imeOptions="actionNext"
+                android:textColorHint="@color/grey"
+                android:layout_margin="5dp"
+                android:textColor="@color/primary_light_blue"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="6">
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Allocation Amount"
+                android:textColor="@color/black"
+                android:padding="5dp"
+                android:layout_margin="5dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/row_edt_allocation_amount"
+                android:padding="10sp"
+                android:textStyle="bold"
+                android:hint="Allocated Amount"
+                android:inputType="numberDecimal"
+                android:imeOptions="actionDone"
+                android:textColorHint="@color/grey"
+                android:layout_margin="5dp"
+                android:textColor="@color/primary_light_blue"/>
+
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1">
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Save Scheme"
+                android:textColor="@color/black"
+                android:padding="5dp"
+                android:layout_margin="5dp"/>
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/row_chk_save"
+                android:padding="10sp"
+                android:buttonTint="@color/primary_light_blue"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_margin="5dp"
+                />
+
+
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

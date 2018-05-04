@@ -12,7 +12,6 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
     <string name="title_mutual_fund">Mutual Funds</string>
     <string name="title_mutual_fund_manual">Mutual Funds Manual</string>
     <string name="title_transact_online">Transact Online</string>

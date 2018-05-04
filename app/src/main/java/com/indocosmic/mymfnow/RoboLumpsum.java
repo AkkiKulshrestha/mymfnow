@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.text.Html;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
@@ -17,8 +18,10 @@ import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -46,6 +49,7 @@ import org.json.JSONObject;
 
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -61,7 +65,7 @@ public class RoboLumpsum extends AppCompatActivity{
     String Selected_RiskType,StrAmount;
     public String[] ArrayListRiskToleranceType= new String[] {"Select Category","Conservative","Moderately Conservative", "Moderate", "Moderately Aggressive" , "Aggressive"};
 
-    CardView CardPlanCreated;
+    LinearLayout CardPlanCreated;
     ProgressDialog myDialog;
     JSONObject JSONObjectResponse;
 
@@ -73,6 +77,9 @@ public class RoboLumpsum extends AppCompatActivity{
     Button BtnViewResult;
     WebView Wb_Plan;
     Dialog DialogResultRoboLumpsum;
+    ArrayList scheme_list_array;
+    LinearLayout ll_parent_portfolio;
+    int object_no_portfolio=1;
 
 
     @Override
@@ -145,7 +152,7 @@ public class RoboLumpsum extends AppCompatActivity{
             }
         });
 
-        CardPlanCreated = (CardView)findViewById(R.id.CardPlanCreated);
+        CardPlanCreated = (LinearLayout)findViewById(R.id.CardPlanCreated);
         CardPlanCreated.setVisibility(View.GONE);
 
         BtnViewResult = (Button)findViewById(R.id.BtnViewResult);
@@ -156,6 +163,8 @@ public class RoboLumpsum extends AppCompatActivity{
             }
         });
 
+
+        ll_parent_portfolio = (LinearLayout)findViewById(R.id.ll_parent_portfolio);
 
     }
 
@@ -225,7 +234,6 @@ public class RoboLumpsum extends AppCompatActivity{
                                     Log.d("AssetAmtDebt",AssetAllocationDebtAmt);
                                          /*   "projected_list":[{"invested_amount":1.0E8,"expected_amount":1.0E8,"minimum_expected_amount":1.0E8,"maximum_expected_amount":1.0E8,"year":"Year1"}
                                             "historical_list":[{"year":2008,"invested_amount":1.0E8,"growth_amount":1.0E8,"fd_amount":1.0E8}],
-                                        "scheme_list":[{"scheme_name":"L\u0026T India Prudence Fund- Regular Plan - Growth","category":"Balanced Funds Equity Oriented","allocation_percentage":10.0,"allocation_amount":1.0E7},{"scheme_name":"Kotak Select Focus Fund - Growth","category":"Equity Funds Large Cap","allocation_percentage":10.0,"allocation_amount":1.0E7},{"scheme_name":"SBI Blue Chip Fund-Regular Plan Growth","category":"Equity Funds Large Cap","allocation_percentage":10.0,"allocation_amount":1.0E7},{"scheme_name":"Mirae Asset Emerging Bluechip Fund - Regular Plan - Growth Option","category":"Equity Funds Mid and Small Cap","allocation_percentage":20.0,"allocation_amount":2.0E7},{"scheme_name":"Reliance Small Cap Fund - Growth Plan - Growth Option","category":"Equity Funds Mid and Small Cap","allocation_percentage":20.0,"allocation_amount":2.0E7},{"scheme_name":"Aditya Birla Sun Life Advantage Fund - Regular Growth","category":"Equity Funds Diversified","allocation_percentage":15.0,"allocation_amount":1.5E7},{"scheme_name":"DSP BlackRock Opportunities Fund-Regular Plan - Growth","category":"Equity Funds Diversified","allocation_percentage":15.0,"allocation_amount":1.5E7}]}
 */
                                     ShowPlan();
 
@@ -340,6 +348,8 @@ public class RoboLumpsum extends AppCompatActivity{
     }
 
     private void ShowPlan() {
+
+
         CardPlanCreated.setVisibility(View.VISIBLE);
 
         DialogResultRoboLumpsum = new Dialog(RoboLumpsum.this);
@@ -369,6 +379,77 @@ public class RoboLumpsum extends AppCompatActivity{
 
             }
         });
+
+
+        if(scheme_list!=null){
+            try {
+                scheme_list_array = new ArrayList();
+
+                if(scheme_list.length()==0){
+                    TextView TV_No_list = new TextView(this);
+                    TV_No_list.setText("No Record to Display.");
+                    ll_parent_portfolio.addView(TV_No_list);
+                }else {
+
+                    for (int i = 0; i < scheme_list.length(); i++) {
+                        JSONObject jsonObject = scheme_list.getJSONObject(i);
+
+                        String scheme_name = jsonObject.getString("scheme_name");
+                        String category = jsonObject.getString("category");
+                        String allocation_percentage = jsonObject.getString("allocation_percentage");
+                        String allocation_amount = jsonObject.getString("allocation_amount");
+
+                        //row_layout.setPadding(10,10,10,10);
+                        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                        final View rowView = inflater.inflate(R.layout.scheme_list_row, null);
+
+
+                        TextView row_scheme_name = (TextView)rowView.findViewById(R.id.row_scheme_name);
+                        row_scheme_name.setText(scheme_name);
+
+                        final TextView row_changeScheme = (TextView)rowView.findViewById(R.id.row_changeScheme);
+                        row_changeScheme.setHint(String.valueOf(object_no_portfolio));
+
+
+
+                        final TextView row_scheme_category = (TextView)rowView.findViewById(R.id.row_scheme_category);
+                        row_scheme_category.setText(category);
+
+                        final EditText row_edt_allocation_per = (EditText) rowView.findViewById(R.id.row_edt_allocation_per);
+                        row_edt_allocation_per.setText(allocation_percentage);
+
+                        final EditText row_edt_allocation_amount = (EditText) rowView.findViewById(R.id.row_edt_allocation_amount);
+                        row_edt_allocation_amount.setText(allocation_amount);
+
+
+                        final CheckBox row_chk_save = (CheckBox) rowView.findViewById(R.id.row_chk_save);
+
+                        row_changeScheme.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                CommonMethods.DisplayToast(getApplicationContext(),row_changeScheme.getHint().toString());
+                                Log.d("Rows Category", row_scheme_category.getText().toString());
+                            }
+                        });
+
+                        ll_parent_portfolio.addView(rowView);
+
+                        object_no_portfolio++;
+
+
+
+
+                    }
+
+                    //parent_layout_loan.addView(row_layout);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+
 
     }
         

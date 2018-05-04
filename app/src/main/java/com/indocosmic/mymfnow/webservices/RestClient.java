@@ -6,14 +6,14 @@ public class RestClient
 
 		public static String ROOT_URL = "http://www.mymfnow.com/api";
 
-		public static String URLProd = "https://www.finpin.in";
+		public static String URLProd = "http://www.mymfnow.com/api";
 
 		public static String URLDev = "http://13.126.98.215:8081";
 
 		public static String GraphPath = URLProd;
 
 
-		public static String Development = "http://13.126.98.215:8081/finpinapimaster/api/v2";
+		public static String Development = "http://www.mymfnow.com/api";
 		/*static
 			{
 				setupRestClient();
