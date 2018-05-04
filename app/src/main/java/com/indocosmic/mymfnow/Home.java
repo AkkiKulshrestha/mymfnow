@@ -5,7 +5,6 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.content.Intent;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,7 +12,6 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -32,6 +30,7 @@ import com.indocosmic.mymfnow.fragments.PortfolioAnalysis;
 import com.indocosmic.mymfnow.fragments.SIPSchemes;
 import com.indocosmic.mymfnow.mutualFundManualFragmet.FreshPurchase;
 import com.indocosmic.mymfnow.mutualFundManualFragmet.FreshPurchaseWithSIP;
+import com.indocosmic.mymfnow.robo_planning.RoboDashboard;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -142,8 +141,12 @@ public class Home extends AppCompatActivity
                 if (parent_name.equalsIgnoreCase("Calculator")) {
 
                     startActivity(new Intent(getApplicationContext(),CalculatorDashboard.class));
+                    overridePendingTransition(R.animator.move_left,R.animator.move_right);
+                    finish();
                 }else if (parent_name.equalsIgnoreCase("Robo Advisor")) {
                     startActivity(new Intent(getApplicationContext(),RoboDashboard.class));
+                    overridePendingTransition(R.animator.move_left,R.animator.move_right);
+                    finish();
                 }
 
                 return false;

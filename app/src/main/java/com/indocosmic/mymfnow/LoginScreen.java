@@ -70,6 +70,8 @@ public class LoginScreen extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(),Home.class);
                 startActivity(i);
+                overridePendingTransition(R.animator.move_left,R.animator.move_right);
+                finish();
             }
         });
 

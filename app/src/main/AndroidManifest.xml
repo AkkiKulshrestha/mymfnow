@@ -55,17 +55,20 @@
             android:theme="@style/AppTheme"/>
 
         <activity
-            android:name=".RoboDashboard"
+            android:name=".robo_planning.RoboDashboard"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"/>
 
         <activity
-            android:name=".RoboLumpsum"
+            android:name=".robo_planning.RoboLumpsum"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"/>
-
-
-
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name=".robo_planning.RoboSIP"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden"/>
 
         <activity
             android:name=".Home"

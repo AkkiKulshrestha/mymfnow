@@ -1,13 +1,12 @@
-package com.indocosmic.mymfnow;
+package com.indocosmic.mymfnow.robo_planning;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
-import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,9 +32,9 @@ import com.android.volley.Response;
 import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.indocosmic.mymfnow.R;
 import com.indocosmic.mymfnow.utils.CommonMethods;
 import com.indocosmic.mymfnow.utils.ConnectionDetector;
 import com.indocosmic.mymfnow.utils.Constant;
@@ -47,17 +46,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by Akshay on 30-04-2018.
+ * Created by Akshay on 04-05-2018.
  */
 
-public class RoboLumpsum extends AppCompatActivity{
+public class RoboSIP extends AppCompatActivity {
 
     EditText EdtAge,EdtAmountLumpsum,EdtNo_Of_Years;
     Spinner Spn_RiskProfile;
@@ -71,7 +68,7 @@ public class RoboLumpsum extends AppCompatActivity{
 
     String AssetAllocationEquityPer,AssetAllocationDebtPer,AssetAllocationEquityAmt,AssetAllocationDebtAmt,OverViewEquityBalanced,OverViewEquityDiversified,OverViewEquityMidcap;
 
-    String OverViewEquityLargecap,Projected_InvestedAmount,Projected_TimeHorizon,Projected_ExpectedReturnAmount,Projected_FinalMonthYear;
+    String OverViewEquityLargecap,Projected_SIPAmount,Projected_TimeHorizon,Projected_ExpectedReturnAmount,Projected_FinalMonthYear;
     String Projected_Minimum_Return_Per,Projected_Median_Return_Per,Projected_Maximum_Return_Per,Projected_Maximum_ReturnAmount,Projected_Minimum_Return_Amount;
     JSONArray projected_list,historical_list,scheme_list;
     Button BtnViewResult;
@@ -85,10 +82,10 @@ public class RoboLumpsum extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_robo_lumsump);
+        setContentView(R.layout.activity_robo_sip);
 
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("LUMPSUM ROBO");
+            getSupportActionBar().setTitle("SIP ROBO");
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
@@ -104,7 +101,7 @@ public class RoboLumpsum extends AppCompatActivity{
 
         EdtNo_Of_Years= (EditText)findViewById(R.id.EdtNo_Of_Years);
 
-         Spn_RiskProfile= (Spinner)findViewById(R.id.Spn_RiskProfile);
+        Spn_RiskProfile= (Spinner)findViewById(R.id.Spn_RiskProfile);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, ArrayListRiskToleranceType);
 
         // Setting the array adapter containing country list to the spinner widget
@@ -139,8 +136,8 @@ public class RoboLumpsum extends AppCompatActivity{
         Spn_RiskProfile.setOnItemSelectedListener(PeriodSelectedListener);
 
 
-         BtnBuildMyPlan= (Button)findViewById(R.id.BtnBuildMyPlan);
-         BtnBuildMyPlan.setOnClickListener(new View.OnClickListener() {
+        BtnBuildMyPlan= (Button)findViewById(R.id.BtnBuildMyPlan);
+        BtnBuildMyPlan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(validateBuildPlan()){
@@ -170,12 +167,12 @@ public class RoboLumpsum extends AppCompatActivity{
 
     private void ApiForBuildingPlan() {
 
-        myDialog = new ProgressDialog(RoboLumpsum.this);
+        myDialog = new ProgressDialog(RoboSIP.this);
         myDialog.setMessage("Please wait...");
         myDialog.setCancelable(false);
         myDialog.setCanceledOnTouchOutside(false);
         myDialog.show();
-        String URL_Robo_Lumpsum = RestClient.ROOT_URL + "/robo/getRoboAdvisor";
+        String URL_Robo_Lumpsum = RestClient.ROOT_URL + "/robo/getSIPRoboAdvisor";
         try {
             Log.d("URL",URL_Robo_Lumpsum);
 
@@ -192,28 +189,28 @@ public class RoboLumpsum extends AppCompatActivity{
                                 Log.d("Response",response);
                                 try {
                                     JSONObjectResponse = new JSONObject(response);
-                                     AssetAllocationEquityPer = JSONObjectResponse.getString("equity");
-                                     AssetAllocationDebtPer = JSONObjectResponse.getString("debt");
+                                    AssetAllocationEquityPer = JSONObjectResponse.getString("equity");
+                                    AssetAllocationDebtPer = JSONObjectResponse.getString("debt");
 
 
-                                     OverViewEquityBalanced = JSONObjectResponse.getString("equity_balanced");
-                                     OverViewEquityDiversified = JSONObjectResponse.getString("equity_diversified");
-                                     OverViewEquityMidcap = JSONObjectResponse.getString("equity_midcap");
-                                     OverViewEquityLargecap = JSONObjectResponse.getString("equity_largecap");
+                                    OverViewEquityBalanced = JSONObjectResponse.getString("equity_balanced");
+                                    OverViewEquityDiversified = JSONObjectResponse.getString("equity_diversified");
+                                    OverViewEquityMidcap = JSONObjectResponse.getString("equity_midcap");
+                                    OverViewEquityLargecap = JSONObjectResponse.getString("equity_largecap");
 
-                                     Projected_InvestedAmount = JSONObjectResponse.getString("invested_amount");
-                                     Projected_TimeHorizon = JSONObjectResponse.getString("time_horizon");
-                                     Projected_ExpectedReturnAmount = JSONObjectResponse.getString("projected_final_value");
-                                     Projected_FinalMonthYear = JSONObjectResponse.getString("projected_final_month_year");
-                                     Projected_Minimum_Return_Per = JSONObjectResponse.getString("minimum_return");
-                                     Projected_Median_Return_Per = JSONObjectResponse.getString("median_return");
-                                     Projected_Maximum_Return_Per = JSONObjectResponse.getString("maximum_return");
-                                     projected_list = JSONObjectResponse.getJSONArray("projected_list");
+                                    Projected_SIPAmount = JSONObjectResponse.getString("sip_amount");
+                                    Projected_TimeHorizon = JSONObjectResponse.getString("time_horizon");
+                                    Projected_ExpectedReturnAmount = JSONObjectResponse.getString("projected_final_growth_amount");
+                                    Projected_FinalMonthYear = JSONObjectResponse.getString("projected_final_month_year");
+                                    Projected_Minimum_Return_Per = JSONObjectResponse.getString("minimum_return");
+                                    Projected_Median_Return_Per = JSONObjectResponse.getString("median_return");
+                                    Projected_Maximum_Return_Per = JSONObjectResponse.getString("maximum_return");
+                                    projected_list = JSONObjectResponse.getJSONArray("projected_list");
                                     for (int k = 0;k<projected_list.length();k++){
                                         JSONObject jsonObject = projected_list.getJSONObject(k);
                                         if(k==projected_list.length()-1){
-                                            Projected_Minimum_Return_Amount = jsonObject.getString("minimum_expected_amount");
-                                            Projected_Maximum_ReturnAmount  = jsonObject.getString("maximum_expected_amount");
+                                            Projected_Minimum_Return_Amount = jsonObject.getString("invested_amount");
+                                            Projected_Maximum_ReturnAmount  = jsonObject.getString("total_amount");
                                             Log.d("MinReturn",Projected_Minimum_Return_Amount);
                                             Log.d("MaxReturn",Projected_Maximum_ReturnAmount);
                                         }
@@ -222,8 +219,8 @@ public class RoboLumpsum extends AppCompatActivity{
                                     }
 
 
-                                     historical_list = JSONObjectResponse.getJSONArray("historical_list");
-                                     scheme_list = JSONObjectResponse.getJSONArray("scheme_list");
+                                    historical_list = JSONObjectResponse.getJSONArray("historical_list");
+                                    scheme_list = JSONObjectResponse.getJSONArray("scheme_list");
 
                                     Double asset_equity_amt = ((Double.valueOf(AssetAllocationEquityPer)/100)*100);
                                     AssetAllocationEquityAmt = String.format("%.1f", asset_equity_amt);
@@ -352,7 +349,7 @@ public class RoboLumpsum extends AppCompatActivity{
 
         CardPlanCreated.setVisibility(View.VISIBLE);
 
-        DialogResultRoboLumpsum = new Dialog(RoboLumpsum.this);
+        DialogResultRoboLumpsum = new Dialog(RoboSIP.this);
         DialogResultRoboLumpsum.requestWindowFeature(Window.FEATURE_NO_TITLE);
         DialogResultRoboLumpsum.setCanceledOnTouchOutside(true);
         DialogResultRoboLumpsum.setCancelable(true);
@@ -367,7 +364,7 @@ public class RoboLumpsum extends AppCompatActivity{
         Wb_Plan.addJavascriptInterface(new WebAppInterfaceMultiCardDataLumpSumRobo(), "Android");
         Wb_Plan.getSettings().setJavaScriptEnabled(true);
         // webView.loadUrl(getAssets().toString()sc_chart.html);
-        Wb_Plan.loadUrl("file:///android_asset/www/new_lumpsum_robo_multi_card.html");
+        Wb_Plan.loadUrl("file:///android_asset/www/new_sip_robo_multi_card.html");
 
 
         title.setTypeface(Constant.OpenSansBold(getApplicationContext()));
@@ -452,9 +449,9 @@ public class RoboLumpsum extends AppCompatActivity{
 
 
     }
-        
 
-    
+
+
 
 
 
@@ -501,8 +498,8 @@ public class RoboLumpsum extends AppCompatActivity{
         }
 
         @JavascriptInterface
-        public String getProjected_InvestedAmount() {
-            return Projected_InvestedAmount;
+        public String getProjected_SIPAmount() {
+            return Projected_SIPAmount;
 
         }
         @JavascriptInterface
@@ -561,7 +558,7 @@ public class RoboLumpsum extends AppCompatActivity{
 
     }
 
-        private boolean validateBuildPlan() {
+    private boolean validateBuildPlan() {
         boolean result = true;
 
         if (!MyValidator.isValidField(EdtAge)) {
@@ -626,7 +623,20 @@ public class RoboLumpsum extends AppCompatActivity{
 
     @Override
     public boolean onSupportNavigateUp() {
+
+        Intent i = new Intent(getApplicationContext(),RoboDashboard.class);
+        startActivity(i);
+        overridePendingTransition(R.animator.left_right,R.animator.right_left);
         finish();
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        Intent i = new Intent(getApplicationContext(),RoboDashboard.class);
+        startActivity(i);
+        overridePendingTransition(R.animator.left_right,R.animator.right_left);
+        finish();
     }
 }
