@@ -165,7 +165,7 @@
 
          .ProjectDataSummary{
             background-color: #80CBC4;
-            font-size: 11px;
+            font-size: 14px;
             text-align: left;
             margin: 7px;
             color: #fff;
@@ -212,11 +212,8 @@
             <span class="titleTextBlack">PROJECTED RETURNS</span>
             <div id="projected_returns_chart" style="height: 240px; margin: 2px;  width: 100%;"></div>
             <div class="ProjectDataSummary">
-                <p style="padding:2px;">Projected growth of <span id="ProjectedGrowthAmt"></span> Lump Sum over <span id="SpanTimeHorizon"></span> years.</p>
-                <p style="padding:2px;">Invested Amount - <span id="SpanInvestedAmt"></span></p>
-                <p style="padding:2px;">Minimum Expected Growth - <span id="MinimumExpectedAmt"></span></p>
-                <p style="padding:2px;">Expected Growth - <span id="SpanExpectedGrowthAmt"></span></p>
-                <p style="padding:2px;">Maximum Expected Growth - <span id="MaximumExpectedAmt"></span></p>
+                <p style="padding:2px;">Projected growth of <span id="ProjectedGrowthAmt"></span> Monthly SIP over <span id="SpanTimeHorizon"></span> years.</p>
+
             </div>
             <div class="DisclaimerTxt">
                 <span>Disclaimer :</span>
@@ -228,7 +225,7 @@
             <span class="titleTextBlack">HISTORICAL RETURNS</span>
             <div id="historical_returns_chart" style="height: 250px; margin: 2px;  width: 100%;"></div>
             <div class="ProjectDataSummary">
-                <p style="padding:5px;">Historical growth of <span id="HistoricalGrowthAmt"></span> Lump Sum in the last <span id="SpanTimeHorizon1"></span> years.</p>
+                <p style="padding:5px;">Historical growth of <span id="HistoricalGrowthAmt"></span> Monthly SIP in the last <span id="SpanTimeHorizon1"></span> years.</p>
             </div>
 
         </div>
@@ -316,6 +313,8 @@
                 var optionsOverview = {
                     pieHole: 0.4,
                     legend: 'none',
+                    //legend: { position: 'bottom' , maxLines: 3, minLines: 3},
+
                     height: '300',
                     width: '300',
                     chartArea: { left: 40, top: 30, width: '80%', height: '80%' },
@@ -342,9 +341,7 @@
                 var dataProjected = new google.visualization.DataTable();
                       dataProjected.addColumn('string', 'Year');
                       dataProjected.addColumn('number', 'Invested Amount');
-                      dataProjected.addColumn('number', 'Minimum Expected Amount');
-                      dataProjected.addColumn('number', 'Expected Amount');
-                      dataProjected.addColumn('number', 'Maximum Expected Amount');
+                      dataProjected.addColumn('number', 'Growth Amount');
 
 
 
@@ -352,7 +349,7 @@
 
                     for (var i = 0; i < ProjectedListArray.length; i++){
                         dataProjectedReturns.push(
-                        [ProjectedListArray[i]['year'], Number(ProjectedListArray[i]['invested_amount']),Number(ProjectedListArray[i]['minimum_expected_amount']),Number(ProjectedListArray[i]['expected_amount']),Number(ProjectedListArray[i]['maximum_expected_amount'])]
+                        [ProjectedListArray[i]['year'], Number(ProjectedListArray[i]['invested_amount']),Number(ProjectedListArray[i]['growth_amount'])]
                         //[ProjectedListArray[i]['year'], Number(ProjectedListArray[i]['minimum_expected_amount'])]
                         );
                     }
@@ -374,16 +371,15 @@
                           },
                           format: 'short'
                         },
-                        "colors": ['#535fab','#698c07','#f58634','#b4c2c6'],
-                        series: {
-                          1: {curveType: 'function'}
-                        },
-                    legend: { position: 'bottom'}
+                         "colors": ['#535fab','#698c07'],
+                          legend: { position: 'bottom', maxLines: 3},
+                         bar: { groupWidth: '75%' },
+                         isStacked: true,
 
 
                       };
 
-                      var chart2 = new google.visualization.LineChart(document.getElementById('projected_returns_chart'));
+                      var chart2 = new google.visualization.ColumnChart(document.getElementById('projected_returns_chart'));
                       chart2.draw(dataProjected, optionsProjected);
 
                 }
@@ -436,7 +432,7 @@
                           1: {curveType: 'function'}
                         },
                         //legend: { position: "top"}
-                       legend: { position: 'bottom'}
+                       legend: { position: 'bottom' , maxLines: 3}
 
                       };
 
@@ -519,8 +515,8 @@
             var Projected_Median_Return_Per = Number(Android.getProjected_Median_Return_Per());
             var Projected_Maximum_Return_Per = Number(Android.getProjected_Maximum_Return());
 
-            var Projected_Minimum_ReturnAmount = Number(Android.getProjected_Minimum_ReturnAmount()).toFixed(0);
-            var Projected_Maximum_ReturnAmount = Number(Android.getProjected_Maximum_ReturnAmount()).toFixed(0);
+            var Projected_Invested_Amount = Number(Android.getProjected_Invested_Amount()).toFixed(0);
+            var Projected_TotalAmount = Number(Android.getProjected_TotalAmount()).toFixed(0);
 
                         // Legend of Overview Graph
             var divOverview = document.getElementById('legendDivOverview');
@@ -548,14 +544,14 @@
             document.getElementById('ProjectedGrowthAmt').innerHTML = '₹ ' + filterNumberToWordFormat(Projected_SIPAmount);
             document.getElementById('SpanTimeHorizon').innerHTML =  Projected_TimeHorizon;
 
-            document.getElementById('SpanInvestedAmt').innerHTML = '₹ ' + filterNumberToWordFormat(Projected_SIPAmount);
-            document.getElementById('MinimumExpectedAmt').innerHTML = '₹ ' + filterNumberToWordFormat(Projected_Minimum_ReturnAmount);
-            document.getElementById('SpanExpectedGrowthAmt').innerHTML = '₹ ' + filterNumberToWordFormat(Projected_ExpectedReturnAmount);
-            document.getElementById('MaximumExpectedAmt').innerHTML = '₹ ' + filterNumberToWordFormat(Projected_Maximum_ReturnAmount);
+            //document.getElementById('SpanInvestedAmt').innerHTML = '₹ ' + filterNumberToWordFormat(Projected_SIPAmount);
+            //document.getElementById('MinimumExpectedAmt').innerHTML = '₹ ' + filterNumberToWordFormat(Projected_Invested_Amount);
+            //document.getElementById('SpanExpectedGrowthAmt').innerHTML = '₹ ' + filterNumberToWordFormat(Projected_ExpectedReturnAmount);
+            //document.getElementById('MaximumExpectedAmt').innerHTML = '₹ ' + filterNumberToWordFormat(Projected_TotalAmount);
 
             document.getElementById('projected_final_month_year').innerHTML = Projected_FinalMonthYear;
             document.getElementById('projected_final_month_year1').innerHTML = Projected_FinalMonthYear;
-            document.getElementById('InvestedDisclaimerAmount').innerHTML = '₹ ' + filterNumberToWordFormat(Projected_SIPAmount);
+            document.getElementById('InvestedDisclaimerAmount').innerHTML = '₹ ' + filterNumberToWordFormat(Projected_Invested_Amount);
             document.getElementById('ExpectedDisclaimerAmount').innerHTML = '₹ ' + filterNumberToWordFormat(Projected_ExpectedReturnAmount);
 
             document.getElementById('HistoricalGrowthAmt').innerHTML = '₹ ' + filterNumberToWordFormat(Projected_SIPAmount);

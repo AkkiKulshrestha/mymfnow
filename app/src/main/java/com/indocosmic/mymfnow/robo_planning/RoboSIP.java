@@ -69,7 +69,7 @@ public class RoboSIP extends AppCompatActivity {
     String AssetAllocationEquityPer,AssetAllocationDebtPer,AssetAllocationEquityAmt,AssetAllocationDebtAmt,OverViewEquityBalanced,OverViewEquityDiversified,OverViewEquityMidcap;
 
     String OverViewEquityLargecap,Projected_SIPAmount,Projected_TimeHorizon,Projected_ExpectedReturnAmount,Projected_FinalMonthYear;
-    String Projected_Minimum_Return_Per,Projected_Median_Return_Per,Projected_Maximum_Return_Per,Projected_Maximum_ReturnAmount,Projected_Minimum_Return_Amount;
+    String Projected_Minimum_Return_Per,Projected_Median_Return_Per,Projected_Maximum_Return_Per,Projected_TotalAmount,Projected_Invested_Amount;
     JSONArray projected_list,historical_list,scheme_list;
     Button BtnViewResult;
     WebView Wb_Plan;
@@ -209,10 +209,10 @@ public class RoboSIP extends AppCompatActivity {
                                     for (int k = 0;k<projected_list.length();k++){
                                         JSONObject jsonObject = projected_list.getJSONObject(k);
                                         if(k==projected_list.length()-1){
-                                            Projected_Minimum_Return_Amount = jsonObject.getString("invested_amount");
-                                            Projected_Maximum_ReturnAmount  = jsonObject.getString("total_amount");
-                                            Log.d("MinReturn",Projected_Minimum_Return_Amount);
-                                            Log.d("MaxReturn",Projected_Maximum_ReturnAmount);
+                                            Projected_Invested_Amount = jsonObject.getString("invested_amount");
+                                            Projected_TotalAmount  = jsonObject.getString("total_amount");
+                                            Log.d("MinReturn",Projected_Invested_Amount);
+                                            Log.d("MaxReturn",Projected_TotalAmount);
                                         }
 
 
@@ -261,8 +261,8 @@ public class RoboSIP extends AppCompatActivity {
                         params.put("current_age", EdtAge.getText().toString());
                         params.put("risk_profile", Selected_RiskType);
                         params.put("time_horizon", EdtNo_Of_Years.getText().toString());
-                        params.put("invested_amount", StrAmount);
-                        Log.d("ParrasRoboLumpsum",params.toString() );
+                        params.put("sip_amount", StrAmount);
+                        Log.d("ParrasRoboSip",params.toString() );
                         return params;
                     }
 
@@ -534,14 +534,14 @@ public class RoboSIP extends AppCompatActivity {
         }
 
         @JavascriptInterface
-        public String getProjected_Minimum_ReturnAmount() {
-            return Projected_Minimum_Return_Amount;
+        public String getProjected_Invested_Amount() {
+            return Projected_Invested_Amount;
 
         }
 
         @JavascriptInterface
-        public String getProjected_Maximum_ReturnAmount() {
-            return Projected_Maximum_ReturnAmount;
+        public String getProjected_TotalAmount() {
+            return Projected_TotalAmount;
 
         }
         @JavascriptInterface
