@@ -111,6 +111,22 @@ public class CommonMethods
 			return NewString;
 		}
 
+		public static String UrlFormatString(String OriginalString){
+			String NewString = "";
+			if(OriginalString!=null && !OriginalString.equalsIgnoreCase("")){
+				if(OriginalString.contains(" ")){
+
+					NewString = OriginalString.replace(" ","+");
+
+				}else{
+                    NewString = OriginalString;
+                }
+			}
+
+
+			return NewString;
+		}
+
 		public static int GetSystemHours(){
 
 			int Systemhours = 0;

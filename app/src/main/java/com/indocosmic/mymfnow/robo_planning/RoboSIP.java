@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -21,6 +22,8 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -73,11 +76,15 @@ public class RoboSIP extends AppCompatActivity {
     JSONArray projected_list,historical_list,scheme_list;
     Button BtnViewResult;
     WebView Wb_Plan;
-    Dialog DialogResultRoboLumpsum;
+    Dialog DialogResultRoboLumpsum,DialogSimilarPlanChangeScheme;
     ArrayList scheme_list_array;
     LinearLayout ll_parent_portfolio;
     int object_no_portfolio=1;
-
+    View rowView;
+    JSONArray  list_similar_schemes;
+    LinearLayout ll_parent_change_schemas_plans;
+    ArrayList SimilarSchemasList;
+    int dynamic_row_pos = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -276,55 +283,6 @@ public class RoboSIP extends AppCompatActivity {
 
                 };
 
-
-
-               /* Log.d("params",params.toString());
-                JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, URL_Robo_Lumpsum,params,
-                        new Response.Listener<JSONObject>() {
-                            @Override
-                            public void onResponse(JSONObject response) {
-                                Log.d("Response",response.toString());
-                                try {
-                                    Boolean Status = response.getBoolean("Status");
-                                    String Message = response.getString("Message");
-
-                                    if(Status) {
-                                        myDialog.dismiss();
-
-
-
-                                    }
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
-
-                            }
-                        },
-                        new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                myDialog.dismiss();
-
-                                //Toast.makeText(MainActivity.this,error.toString(),Toast.LENGTH_LONG).show();
-                            }
-                        })*//*{
-
-                    @Override
-                    public Map<String, String> getHeaders() throws AuthFailureError {
-                        HashMap<String, String> headers = new HashMap<String, String>();
-                        headers.put("AccessKey",AccessKey);
-                        headers.put("AccessId", UserId);
-                        headers.put("DeviceType",DeviceType);
-                        return headers;
-                    }
-                }*//* {
-
-                    @Override
-                    public String getBodyContentType() {
-                        return "application/x-www-form-urlencoded; charset=UTF-8";
-                    }
-                };*/
-
                 int socketTimeout = 50000;//30 seconds - change to what you want
                 RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
                 stringRequest.setRetryPolicy(policy);
@@ -426,6 +384,7 @@ public class RoboSIP extends AppCompatActivity {
                             public void onClick(View v) {
                                 CommonMethods.DisplayToast(getApplicationContext(),row_changeScheme.getHint().toString());
                                 Log.d("Rows Category", row_scheme_category.getText().toString());
+                                CallApiToGetSimilarSchemes(row_changeScheme.getHint().toString(),row_scheme_category.getText().toString());
                             }
                         });
 
@@ -446,6 +405,192 @@ public class RoboSIP extends AppCompatActivity {
 
         }
 
+
+
+    }
+
+    private void CallApiToGetSimilarSchemes(final String sequence_no, final String CategoryToSearch) {
+        Log.d("sequence_no",sequence_no);
+        Log.d("CategoryToSearch",CategoryToSearch);
+        final String CategoryUriFormatted = CommonMethods.UrlFormatString(CategoryToSearch);
+
+        String URL_Robo_Lumpsum = RestClient.ROOT_URL + "/robo/getRoboSchemes?category="+CategoryUriFormatted;
+        try {
+            Log.d("URL",URL_Robo_Lumpsum);
+
+            ConnectionDetector cd = new ConnectionDetector(this);
+            boolean isInternetPresent = cd.isConnectingToInternet();
+            if (isInternetPresent) {
+
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_Robo_Lumpsum,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                Log.d("Response",response);
+                                try {
+                                    JSONObject jsonObject = new JSONObject(response);
+                                     list_similar_schemes = jsonObject.getJSONArray("list");
+                                    Log.d("JsonArray",list_similar_schemes.toString());
+                                    ShowPopupSimilarSchemas(sequence_no);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+
+                            }
+                        }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                        VolleyLog.d("volley", "Error: " + error.getMessage());
+                        error.printStackTrace();
+
+                    }
+                }) {
+
+                    @Override
+                    public String getBodyContentType() {
+                        return "application/x-www-form-urlencoded; charset=UTF-8";
+                    }
+                    @Override
+                    public Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<String, String>();
+                        params.put("category", CategoryUriFormatted);
+                        Log.d("ParrasRoboSip",params.toString() );
+                        return params;
+                    }
+
+                    /*@Override
+                      protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<String, String>();
+                        params.put("username", etUname.getText().toString().trim());
+                        params.put("password", etPass.getText().toString().trim());
+                        return params;
+                    }*/
+
+                };
+
+                int socketTimeout = 50000;//30 seconds - change to what you want
+                RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+                stringRequest.setRetryPolicy(policy);
+                RequestQueue requestQueue = Volley.newRequestQueue(this);
+                requestQueue.add(stringRequest);
+
+
+
+            } else {
+                CommonMethods.DisplayToast(this, "Please check your internet connection");
+            }
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+
+    }
+
+    @SuppressWarnings("ResourceType")
+    private void ShowPopupSimilarSchemas(String sequence_no) {
+
+        DialogSimilarPlanChangeScheme = new Dialog(RoboSIP.this);
+        DialogSimilarPlanChangeScheme.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        DialogSimilarPlanChangeScheme.setCanceledOnTouchOutside(true);
+        DialogSimilarPlanChangeScheme.setCancelable(true);
+        DialogSimilarPlanChangeScheme.setContentView(R.layout.popup_change_scheme_robo);
+        DialogSimilarPlanChangeScheme.getWindow().setBackgroundDrawable(
+                new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        TextView title = (TextView)DialogSimilarPlanChangeScheme.findViewById(R.id.title) ;
+        ImageView iv_close = (ImageView)DialogSimilarPlanChangeScheme.findViewById(R.id.iv_close);
+        LinearLayout ll_headers = (LinearLayout)DialogSimilarPlanChangeScheme.findViewById(R.id.ll_headers);
+        ll_parent_change_schemas_plans = (LinearLayout)DialogSimilarPlanChangeScheme.findViewById(R.id.ll_parent_change_schemas_plans);
+        title.setTypeface(Constant.OpenSansBold(getApplicationContext()));
+        DialogSimilarPlanChangeScheme.show();
+        iv_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogSimilarPlanChangeScheme.dismiss();
+
+            }
+        });
+
+        Button Btn_close = (Button)DialogSimilarPlanChangeScheme.findViewById(R.id.Btn_close);
+        Btn_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogSimilarPlanChangeScheme.dismiss();
+
+            }
+        });
+
+        Button Btn_submit = (Button)DialogSimilarPlanChangeScheme.findViewById(R.id.Btn_submit);
+
+        if(scheme_list!=null){
+            try {
+                SimilarSchemasList = new ArrayList();
+
+                if(list_similar_schemes.length()==0){
+                    ll_headers.setVisibility(View.GONE);
+                    TextView TV_No_list = new TextView(this);
+                    TV_No_list.setText("No Record to Display.");
+                    TV_No_list.setPadding(10,10,10,10);
+                    ll_parent_change_schemas_plans.addView(TV_No_list);
+                }else {
+                    ll_headers.setVisibility(View.VISIBLE);
+                    for (int i = 0; i < list_similar_schemes.length(); i++) {
+                        JSONObject jsonObject = list_similar_schemes.getJSONObject(i);
+
+                        String scheme_name = jsonObject.getString("scheme_name");
+                        String category = jsonObject.getString("category");
+
+                        //row_layout.setPadding(10,10,10,10);
+                        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                        rowView = inflater.inflate(R.layout.similar_scheme_list_row, null);
+                        rowView.setId(dynamic_row_pos);
+
+                        TextView row_scheme_name = (TextView)rowView.findViewById(R.id.row_scheme_name);
+                        row_scheme_name.setText(scheme_name);
+
+                        final TextView row_scheme_category = (TextView)rowView.findViewById(R.id.row_scheme_category);
+                        row_scheme_category.setText(category);
+
+
+
+                        final RadioGroup row_rg_select = (RadioGroup) rowView.findViewById(R.id.row_rg_select);
+                        RadioButton rb_row = new RadioButton(this);
+                        rb_row.setId(dynamic_row_pos);
+
+                        ll_parent_change_schemas_plans.addView(rowView);
+
+                        dynamic_row_pos++;
+
+
+
+
+                    }
+
+                    //parent_layout_loan.addView(row_layout);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+        Btn_submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for(int j=0;j<dynamic_row_pos;j++){
+                    View row_views= (View)ll_parent_change_schemas_plans.findViewById(j+1);
+
+                    final RadioGroup row_rg_select = (RadioGroup)row_views.findViewById(R.id.row_rg_select);
+                    RadioButton rb_btn = (RadioButton)findViewById(j+1);
+                    if(rb_btn.isChecked()) {
+                        Log.d("Selected Plan", ""+rb_btn.getId());
+                    }
+
+                }
+            }
+        });
 
 
     }

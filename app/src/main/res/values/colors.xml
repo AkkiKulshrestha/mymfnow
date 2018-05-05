@@ -21,7 +21,7 @@
     <color name="navigationBarColor">#000000</color>
     <color name="textColorPrimary">#FFFFFF</color>
     <color name="windowBackground">#FFFFFF</color>
-
+    <color name="red_close">#f57c7c</color>
     <color name="edittext_bg_color">#0E1F26</color>
     <color name="btn_color_yellow">#DFB223</color>
     <color name="orange">#f7af50</color>
