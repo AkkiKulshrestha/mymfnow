@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.indocosmic.mymfnow.myGoals.CreateGoal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+       <TextView
+        android:id="@+id/txt_mygoal_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/btn_color_yellow"
+        android:layout_marginBottom="4dp"
+        android:padding="5dp"
+        android:textSize="13sp"
+        android:gravity="center"
+        android:text="sd"
+        android:textColor="@color/white"
+        android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DESIGN YOUR GOAL"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:padding="5dp"
+            android:layout_marginBottom="5dp"/>
+
+            <View
+            android:layout_width="100dp"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:background="@color/red_close"
+            android:layout_marginBottom="2dp"/>
+
+          <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Just a few more details."
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:layout_marginBottom="2dp"/>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardElevation="10dp"
+            android:layout_margin="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/goal_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="What do you want to call this goal"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:inputType="text" />
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/goal_age"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="What is your current age?"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:inputType="number"/>
+
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/goal_amount_to_consider"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="At what amount would you consider yourself wealthy"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:singleLine="true"
+                    android:inputType="number"
+                    android:visibility="gone"/>
+
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/money_required_today"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint=" How much money do you require in today's value"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:singleLine="true"
+                    android:inputType="number"
+                    android:visibility="gone"/>
+
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/years_after_amount_return"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Afer how many years away would you need this amount"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:singleLine="true"
+                    android:inputType="number"
+                    android:visibility="gone"/>
+
+
+
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/years_to_save_goal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="For how many years do you want to save for this goal"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:singleLine="true"
+                    android:inputType="number"
+                    android:visibility="gone"/>
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/inflation_percent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="The expected rate of inflation over the years (% per annum)"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:singleLine="true"
+                    android:inputType="number" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Determine your risk profile"
+                    android:textSize="17sp"
+                    android:layout_marginStart="22dp"
+                    android:layout_marginEnd="22dp"/>
+
+                <Spinner
+                    android:id="@+id/spn_risk_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="10dp"/>
+
+
+                <Button
+                    android:id="@+id/btnCreateGoal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Next"
+                    android:textColor="@color/white"
+                    android:background="@color/colorPrimaryLight"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:textSize="14sp"/>
+
+         </LinearLayout>
+      </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardElevation="10dp"
+            android:layout_margin="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:padding="8dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:text="Summary"
+                    android:gravity="center"/>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/txt_todays_amount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:hint="Your targeted Amount (today's value)"
+                        android:enabled="false"
+                        android:textColor="@color/black"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/txt_inflation_amount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:singleLine="true"
+                        android:enabled="false"
+                        android:textColor="@color/black"
+                        android:hint="Your targeted Amount (Inflation adjusted 6% per annum)" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/txt_years_to_save"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:enabled="false"
+                        android:textColor="@color/black"
+                        android:hint="Number of years you need to save" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/txt_mothely_sip"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:enabled="false"
+                        android:textColor="@color/black"
+                        android:hint="Monthly SIP investment required"
+                        android:layout_marginBottom="10dp"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <Button
+                    android:id="@+id/btnAchieveGoal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Achieve Your Goal based on SIP"
+                    android:textColor="@color/white"
+                    android:background="@color/colorPrimaryLight"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:textSize="14sp"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+</ScrollView>

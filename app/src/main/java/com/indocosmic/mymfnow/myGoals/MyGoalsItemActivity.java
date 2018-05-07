@@ -87,4 +87,11 @@ public class MyGoalsItemActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(getApplicationContext(),MyGoalsActivity.class);
+        startActivity(i);
+        overridePendingTransition(R.animator.left_right,R.animator.right_left);
+        finish();
+    }
 }

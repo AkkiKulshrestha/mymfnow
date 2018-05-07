@@ -19,7 +19,7 @@ public class MyGoalsActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_my_goals);
 
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("My Goals DashBoard");
+            getSupportActionBar().setTitle("My Goals");
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 

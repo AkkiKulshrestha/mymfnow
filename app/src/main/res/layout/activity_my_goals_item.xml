@@ -5,12 +5,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.indocosmic.mymfnow.myGoals.MyGoalsItemActivity">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="YOU'RE READY TO CREATE YOUR GOAL!"
+        android:gravity="center"
+        android:background="@color/btn_color_yellow"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:padding="5dp"
+        android:layout_marginBottom="5dp"/>
+
+    <View
+        android:layout_width="100dp"
+        android:layout_height="1dp"
+        android:layout_gravity="center"
+        android:background="@color/red_close"
+        android:layout_margin="5dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="PICK AN OPTION WE WILL RECOMMEND THE BEST FUNDS FOR YOU."
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:padding="5dp"
+        android:layout_marginBottom="2dp"/>
+
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_item"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical" />
+
 
 </LinearLayout>

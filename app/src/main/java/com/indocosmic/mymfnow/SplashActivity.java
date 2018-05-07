@@ -52,11 +52,16 @@ public class SplashActivity extends AppCompatActivity {
                 return;
             }
         }
-        Intent i = new Intent(getApplicationContext(),LoginScreen.class);
-        startActivity(i);
+
         setContentView(R.layout.activity_splash);
        // force_update();
-
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent i = new Intent(getApplicationContext(),LoginScreen.class);
+                startActivity(i);
+            }
+        }, SPLASH_TIME_OUT);
     }
 
     private void force_update() {
