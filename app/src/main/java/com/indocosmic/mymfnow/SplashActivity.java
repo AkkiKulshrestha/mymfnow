@@ -34,7 +34,7 @@ public class SplashActivity extends AppCompatActivity {
     int YourApkVersionCode;
     private int STORAGE_PERMISSION_CODE = 23;
     // Splash screen timer
-    private static int SPLASH_TIME_OUT = 5000;
+    private static int SPLASH_TIME_OUT = 3000;
 
     Dialog dialog;
     String Force_Update_flag = "false";
@@ -60,6 +60,7 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 Intent i = new Intent(getApplicationContext(),LoginScreen.class);
                 startActivity(i);
+                overridePendingTransition(R.animator.move_left,R.animator.move_right);
             }
         }, SPLASH_TIME_OUT);
     }

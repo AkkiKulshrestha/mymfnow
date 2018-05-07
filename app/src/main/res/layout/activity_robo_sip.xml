@@ -32,7 +32,7 @@
                     android:padding="5dp"
                     android:text="SIP MONTHLY INVESTMENT ROBO ADVISOR"
                     android:textAllCaps="true"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textStyle="bold" />
 
             </LinearLayout>

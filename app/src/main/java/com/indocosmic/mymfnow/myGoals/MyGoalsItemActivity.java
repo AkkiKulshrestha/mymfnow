@@ -31,7 +31,7 @@ public class MyGoalsItemActivity extends AppCompatActivity {
         setContentView(R.layout.activity_my_goals_item);
 
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("My Goals List");
+            getSupportActionBar().setTitle("Create your goal");
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 

@@ -48,6 +48,14 @@ public class MyGoalsActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     @Override
+    public void onBackPressed() {
+        Intent i = new Intent(getApplicationContext(),Home.class);
+        startActivity(i);
+        overridePendingTransition(R.animator.left_right,R.animator.right_left);
+        finish();
+    }
+
+    @Override
     public void onClick(View view) {
         int id = view.getId();
         switch(id) {

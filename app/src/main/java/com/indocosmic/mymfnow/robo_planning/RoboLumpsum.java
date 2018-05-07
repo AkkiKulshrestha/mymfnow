@@ -382,6 +382,8 @@ public class RoboLumpsum extends AppCompatActivity{
         if(scheme_list!=null){
             try {
                 scheme_list_array = new ArrayList();
+                ll_parent_portfolio.removeAllViews();
+                object_no_portfolio = 1;
 
                 if(scheme_list.length()==0){
                     TextView TV_No_list = new TextView(this);

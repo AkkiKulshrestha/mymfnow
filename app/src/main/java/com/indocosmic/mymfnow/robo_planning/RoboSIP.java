@@ -339,7 +339,8 @@ public class RoboSIP extends AppCompatActivity {
         if(scheme_list!=null){
             try {
                 scheme_list_array = new ArrayList();
-
+                ll_parent_portfolio.removeAllViews();
+                object_no_portfolio = 1;
                 if(scheme_list.length()==0){
                     TextView TV_No_list = new TextView(this);
                     TV_No_list.setText("No Record to Display.");
@@ -382,7 +383,7 @@ public class RoboSIP extends AppCompatActivity {
                         row_changeScheme.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                CommonMethods.DisplayToast(getApplicationContext(),row_changeScheme.getHint().toString());
+                                //CommonMethods.DisplayToast(getApplicationContext(),row_changeScheme.getHint().toString());
                                 Log.d("Rows Category", row_scheme_category.getText().toString());
                                 CallApiToGetSimilarSchemes(row_changeScheme.getHint().toString(),row_scheme_category.getText().toString());
                             }
@@ -527,6 +528,7 @@ public class RoboSIP extends AppCompatActivity {
         if(scheme_list!=null){
             try {
                 SimilarSchemasList = new ArrayList();
+                ll_parent_change_schemas_plans.removeAllViews();
 
                 if(list_similar_schemes.length()==0){
                     ll_headers.setVisibility(View.GONE);
@@ -555,9 +557,8 @@ public class RoboSIP extends AppCompatActivity {
 
 
 
-                        final RadioGroup row_rg_select = (RadioGroup) rowView.findViewById(R.id.row_rg_select);
-                        RadioButton rb_row = new RadioButton(this);
-                        rb_row.setId(dynamic_row_pos);
+                        final RadioButton Rb_schme_id = (RadioButton)rowView.findViewById(R.id.Rb_schme_id);
+                        Rb_schme_id.setId(dynamic_row_pos);
 
                         ll_parent_change_schemas_plans.addView(rowView);
 
@@ -582,8 +583,9 @@ public class RoboSIP extends AppCompatActivity {
                 for(int j=0;j<dynamic_row_pos;j++){
                     View row_views= (View)ll_parent_change_schemas_plans.findViewById(j+1);
 
-                    final RadioGroup row_rg_select = (RadioGroup)row_views.findViewById(R.id.row_rg_select);
-                    RadioButton rb_btn = (RadioButton)findViewById(j+1);
+                    //final RadioGroup row_rg_select = (RadioGroup)row_views.findViewById(R.id.row_rg_select);
+                    RadioButton rb_btn = (RadioButton)row_views
+                            .findViewById(j+1);
                     if(rb_btn.isChecked()) {
                         Log.d("Selected Plan", ""+rb_btn.getId());
                     }

@@ -226,10 +226,13 @@ public class RecommendedPortFolio extends AppCompatActivity {
         Intent i = new Intent(getApplicationContext(),CreateGoal.class);
         startActivity(i);
         overridePendingTransition(R.animator.left_right,R.animator.right_left);
-        finish();
         return true;
     }
 
-
-
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(getApplicationContext(),CreateGoal.class);
+        startActivity(i);
+        overridePendingTransition(R.animator.left_right,R.animator.right_left);
+    }
 }
