@@ -587,6 +587,7 @@ public class RoboSIP extends AppCompatActivity {
                     if(rb_btn.isChecked()) {
                         Log.d("Selected Plan", ""+rb_btn.getId());
                     }
+                    Log.d("dynamic_row_pos", ""+dynamic_row_pos);
 
                 }
             }
