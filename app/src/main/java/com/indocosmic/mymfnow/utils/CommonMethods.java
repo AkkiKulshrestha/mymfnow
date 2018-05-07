@@ -122,8 +122,6 @@ public class CommonMethods
                     NewString = OriginalString;
                 }
 			}
-
-
 			return NewString;
 		}
 
