@@ -20,6 +20,7 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
@@ -76,8 +77,8 @@ public class RecommendedPortFolio extends AppCompatActivity {
             str_todays_amount = i.getStringExtra("todays_value");
             str_years = i.getStringExtra("years");
             risk_profile = i.getStringExtra("risk_profile");
-
-            txt_todays_amount.setText("Recommended Portfolio (SIP Amount - Rs."+str_todays_amount+")");
+            String til_text = "Recommended Portfolio \n(SIP Amount - Rs."+CommonMethods.NumberDisplayFormattingWithComma(str_sip_amount)+")";
+            txt_todays_amount.setText(til_text);
             pieChart = (PieChart) findViewById(R.id.piechart);
             pieChart.setUsePercentValues(true);
 
@@ -178,30 +179,45 @@ public class RecommendedPortFolio extends AppCompatActivity {
     private void drawPieChart() {
 
         ArrayList<Entry> yvalues = new ArrayList<Entry>();
-        yvalues.add(new Entry(debt, 0));
-        yvalues.add(new Entry(equity, 1));
+        yvalues.add(new Entry(equity, 0));
+        yvalues.add(new Entry(debt, 1));
 
 
         PieDataSet dataSet = new PieDataSet(yvalues, "");
-
+        dataSet.setSliceSpace(2);
+        dataSet.setValueTextSize(12);
         ArrayList<String> xVals = new ArrayList<String>();
-
-        xVals.add("debt");
-        xVals.add("equity");
+        xVals.add("Equity");
+        xVals.add("Debt");
 
 
         PieData data = new PieData(xVals, dataSet);
         data.setValueFormatter(new PercentFormatter());
         pieChart.setData(data);
         pieChart.setDrawHoleEnabled(true);
-        pieChart.setTransparentCircleRadius(25f);
-        pieChart.setHoleRadius(25f);
+        pieChart.setTransparentCircleRadius(30f);
+        pieChart.setHoleRadius(30f);
+        pieChart.invalidate();
+        pieChart.setDescription(null);
+        pieChart.setRotationEnabled(false);
 
         //dataSet.setColors(Color.pie_chart_blue);
         data.setValueTextSize(13f);
-        data.setValueTextColor(Color.DKGRAY);
+        data.setValueTextColor(Color.WHITE);
 
-        pieChart.animateXY(1400, 1400);
+        ArrayList<Integer> colors = new ArrayList<>();
+        colors.add(getResources().getColor(R.color.graph_color_blue));
+        colors.add(getResources().getColor(R.color.red_close));
+
+        dataSet.setColors(colors);
+
+        Legend legend = pieChart.getLegend();
+        legend.setForm(Legend.LegendForm.CIRCLE);
+        legend.setPosition(Legend.LegendPosition.BELOW_CHART_CENTER);
+        legend.setCustom(colors,xVals);
+
+
+        //pieChart.animateXY(1400, 1400);
     }
 
 
@@ -213,5 +229,7 @@ public class RecommendedPortFolio extends AppCompatActivity {
         finish();
         return true;
     }
+
+
 
 }

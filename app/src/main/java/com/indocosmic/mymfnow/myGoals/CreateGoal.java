@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -14,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,6 +37,7 @@ import com.indocosmic.mymfnow.robo_planning.RoboLumpsum;
 import com.indocosmic.mymfnow.utils.CommonMethods;
 import com.indocosmic.mymfnow.utils.ConnectionDetector;
 import com.indocosmic.mymfnow.utils.MyValidator;
+import com.indocosmic.mymfnow.utils.NumberTextWatcherForThousand;
 import com.indocosmic.mymfnow.webservices.RestClient;
 
 import org.json.JSONException;
@@ -54,6 +57,8 @@ public class CreateGoal extends AppCompatActivity implements View.OnClickListene
 
     EditText txt_todays_amount,txt_inflation_amount,txt_years_to_save,txt_mothely_sip;
     Spinner spn_risk_profile;
+    ScrollView Scroll_GoalLayout;
+    CardView Card_ResultSummary;
     Button btnCreateGoal,btnAchieveGoal;
     ProgressDialog myDialog;
 
@@ -80,9 +85,14 @@ public class CreateGoal extends AppCompatActivity implements View.OnClickListene
             txt_mygoal_name.setText(str_mygoal_name);
         }
 
+        Scroll_GoalLayout = (ScrollView)findViewById(R.id.Scroll_GoalLayout);
+
+
         goal_name = (TextInputEditText) findViewById(R.id.goal_name);
         goal_age = (TextInputEditText) findViewById(R.id.goal_age);
         goal_amount_to_consider = (TextInputEditText) findViewById(R.id.goal_amount_to_consider);
+        goal_amount_to_consider.addTextChangedListener(new NumberTextWatcherForThousand(goal_amount_to_consider));
+
         years_to_save_goal = (TextInputEditText) findViewById(R.id.years_to_save_goal);
         inflation_percent = (TextInputEditText) findViewById(R.id.inflation_percent);
         btnCreateGoal = (Button) findViewById(R.id.btnCreateGoal);
@@ -91,10 +101,19 @@ public class CreateGoal extends AppCompatActivity implements View.OnClickListene
         money_required_today = (TextInputEditText) findViewById(R.id.money_required_today);
         years_after_amount_return = (TextInputEditText) findViewById(R.id.years_after_amount_return);
 
+        Card_ResultSummary = (CardView)findViewById(R.id.Card_ResultSummary);
         txt_todays_amount = (EditText) findViewById(R.id.txt_todays_amount);
+        txt_todays_amount.addTextChangedListener(new NumberTextWatcherForThousand(txt_todays_amount));
+
+
         txt_inflation_amount = (EditText) findViewById(R.id.txt_inflation_amount);
+        txt_inflation_amount.addTextChangedListener(new NumberTextWatcherForThousand(txt_inflation_amount));
+
         txt_years_to_save = (EditText) findViewById(R.id.txt_years_to_save);
+
         txt_mothely_sip = (EditText) findViewById(R.id.txt_mothely_sip);
+        txt_mothely_sip.addTextChangedListener(new NumberTextWatcherForThousand(txt_mothely_sip));
+
 
         spn_risk_profile = (Spinner) findViewById(R.id.spn_risk_profile);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, ArrayListRiskToleranceType);
@@ -141,7 +160,8 @@ public class CreateGoal extends AppCompatActivity implements View.OnClickListene
         myDialog.setCancelable(false);
         myDialog.setCanceledOnTouchOutside(false);
         myDialog.show();
-
+        final String GoalAmount = NumberTextWatcherForThousand.trimCommaOfString(goal_amount_to_consider.getText().toString());
+        final String RiskProfile = CommonMethods.UrlFormatString(selected_RiskType);
         String URL_Create_Goal = RestClient.ROOT_URL + "/robo/getSIPAmount";
         try {
             Log.d("URL",URL_Create_Goal);
@@ -165,14 +185,35 @@ public class CreateGoal extends AppCompatActivity implements View.OnClickListene
                                    String sip_amount_original = jsonResponse.getString("sip_amount_original");
                                    sip_amount = jsonResponse.getString("sip_amount");
                                    target_amount = jsonResponse.getString("target_amount");
+                                    if(target_amount!=null && !target_amount.equalsIgnoreCase("") && !target_amount.equalsIgnoreCase("0")){
+                                        Double d_target = Double.valueOf(target_amount);
+                                        target_amount = String.format("%.0f",d_target);
+                                        txt_inflation_amount.setText(target_amount);
+                                    }else {
+                                        txt_inflation_amount.setText("0");
+                                    }
 
-                                    txt_todays_amount.setText(todays_value);
-                                    txt_inflation_amount.setText(target_amount);
+                                    if(todays_value!=null && !todays_value.equalsIgnoreCase("") && !todays_value.equalsIgnoreCase("0")){
+                                        Double d_target = Double.valueOf(todays_value);
+                                        todays_value = String.format("%.0f",d_target);
+                                        txt_todays_amount.setText(todays_value);
+                                    }else {
+                                        txt_todays_amount.setText("0");
+                                    }
+
+
+                                    if(sip_amount!=null && !sip_amount.equalsIgnoreCase("") && !sip_amount.equalsIgnoreCase("0")){
+                                        Double d_target = Double.valueOf(sip_amount);
+                                        sip_amount = String.format("%.0f",d_target);
+                                        txt_mothely_sip.setText(sip_amount);
+                                    }else {
+                                        txt_mothely_sip.setText("0");
+                                    }
+
+
                                     txt_years_to_save.setText(years);
-                                    txt_mothely_sip.setText(sip_amount);
-
-                                    btnAchieveGoal.setVisibility(View.VISIBLE);
-
+                                    Card_ResultSummary.setVisibility(View.VISIBLE);
+                                    scrollDown();
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
@@ -198,10 +239,10 @@ public class CreateGoal extends AppCompatActivity implements View.OnClickListene
                         Map<String, String> params = new HashMap<String, String>();
                         params.put("goal_name", goal_name.getText().toString());
                         params.put("current_age", goal_age.getText().toString());
-                        params.put("todays_value", goal_amount_to_consider.getText().toString());
+                        params.put("todays_value", GoalAmount);
                         params.put("years", years_to_save_goal.getText().toString());
                         params.put("inflation_rate", inflation_percent.getText().toString());
-                        params.put("risk_profile", selected_RiskType);
+                        params.put("risk_profile", RiskProfile );
                         Log.d("ParrasCreateGoal",params.toString() );
                         return params;
                     }
@@ -225,6 +266,18 @@ public class CreateGoal extends AppCompatActivity implements View.OnClickListene
             e.printStackTrace();
 
         }
+    }
+
+    private void scrollDown() {
+        Scroll_GoalLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                Scroll_GoalLayout.smoothScrollTo(Scroll_GoalLayout.getScrollY(), Scroll_GoalLayout.getScrollY()
+                        + Scroll_GoalLayout.getHeight());
+            }
+        });
+
+
     }
 
     private boolean validateBuildPlan() {
@@ -251,7 +304,7 @@ public class CreateGoal extends AppCompatActivity implements View.OnClickListene
         }
 
         if(!goal_amount_to_consider.getText().toString().equalsIgnoreCase("")){
-            String Strgoal_amount_to_consider = goal_amount_to_consider.getText().toString();
+            String Strgoal_amount_to_consider = NumberTextWatcherForThousand.trimCommaOfString((goal_amount_to_consider.getText().toString()));
             if(Strgoal_amount_to_consider!=null && Integer.valueOf(Strgoal_amount_to_consider)==0){
                 goal_amount_to_consider.setError("Enter Proper Investment Amount");
                 goal_amount_to_consider.requestFocus();
@@ -289,13 +342,7 @@ public class CreateGoal extends AppCompatActivity implements View.OnClickListene
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
         selected_RiskType = spn_risk_profile.getSelectedItem().toString();
-        Log.d("Selected_RiskType-->",""+selected_RiskType);
-        if(selected_RiskType.equalsIgnoreCase("Moderately Conservative")){
-            selected_RiskType = "Moderately_Conservative";
 
-        }else if(selected_RiskType.equalsIgnoreCase("Moderately Aggressive")){
-            selected_RiskType = "Moderately_Aggressive";
-        }
     }
 
     @Override

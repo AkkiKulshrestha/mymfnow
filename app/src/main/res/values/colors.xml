@@ -25,4 +25,7 @@
     <color name="edittext_bg_color">#0E1F26</color>
     <color name="btn_color_yellow">#DFB223</color>
     <color name="orange">#f7af50</color>
+
+    <color name="graph_color_blue">#535fab</color>
+    <color name="graph_color_green">#698c07</color>
 </resources>

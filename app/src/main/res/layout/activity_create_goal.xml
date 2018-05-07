@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
+    android:id="@+id/Scroll_GoalLayout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -12,18 +13,26 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-       <TextView
-        android:id="@+id/txt_mygoal_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/btn_color_yellow"
-        android:layout_marginBottom="4dp"
-        android:padding="5dp"
-        android:textSize="13sp"
-        android:gravity="center"
-        android:text="sd"
-        android:textColor="@color/white"
-        android:textStyle="bold"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/btn_color_yellow"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txt_mygoal_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:padding="5dp"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
 
         <TextView
             android:layout_width="match_parent"
@@ -82,6 +91,7 @@
                     android:hint="What is your current age?"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
+                    android:maxLength="2"
                     android:layout_marginBottom="5dp"
                     android:inputType="number"/>
 
@@ -148,6 +158,8 @@
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="5dp"
                     android:singleLine="true"
+                    android:maxLength="5"
+                    android:imeOptions="actionDone"
                     android:inputType="number" />
 
                 <TextView
@@ -183,11 +195,13 @@
       </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
+            android:id="@+id/Card_ResultSummary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="10dp"
             app:cardBackgroundColor="@color/white"
             app:cardElevation="10dp"
+            android:visibility="gone"
             android:layout_margin="5dp">
 
             <LinearLayout
@@ -282,7 +296,7 @@
                     android:layout_margin="5dp"
                     android:padding="5dp"
                     android:textSize="14sp"
-                    android:visibility="gone"/>
+                    />
 
             </LinearLayout>
 
