@@ -413,6 +413,7 @@ public class RoboSIP extends AppCompatActivity {
     private void CallApiToGetSimilarSchemes(final String sequence_no, final String CategoryToSearch) {
         Log.d("sequence_no",sequence_no);
         Log.d("CategoryToSearch",CategoryToSearch);
+
         final String CategoryUriFormatted = CommonMethods.UrlFormatString(CategoryToSearch);
 
         String URL_Robo_Lumpsum = RestClient.ROOT_URL + "/robo/getRoboSchemes?category="+CategoryUriFormatted;

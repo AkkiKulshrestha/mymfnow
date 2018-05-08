@@ -135,7 +135,6 @@ public class RoboLumpsum extends AppCompatActivity{
         // Setting ItemClick Handler for Spinner Widget
         Spn_RiskProfile.setOnItemSelectedListener(PeriodSelectedListener);
 
-
          BtnBuildMyPlan= (Button)findViewById(R.id.BtnBuildMyPlan);
          BtnBuildMyPlan.setOnClickListener(new View.OnClickListener() {
             @Override

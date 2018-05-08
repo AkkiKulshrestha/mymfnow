@@ -1,5 +1,6 @@
 package com.indocosmic.mymfnow.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -61,6 +62,7 @@ public class MyGoalsItemAdapter extends RecyclerView.Adapter<MyGoalsItemAdapter.
                  Intent i = new Intent(context, CreateGoal.class);
                  i.putExtra("mygoal_name",myGoalItemsModel.getName());
                  context.startActivity(i);
+                 ((Activity)  context).overridePendingTransition(R.animator.move_left,R.animator.move_right);
              }
          });
 

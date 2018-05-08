@@ -31,6 +31,7 @@ import com.indocosmic.mymfnow.fragments.SIPSchemes;
 import com.indocosmic.mymfnow.mutualFundManualFragmet.FreshPurchase;
 import com.indocosmic.mymfnow.mutualFundManualFragmet.FreshPurchaseWithSIP;
 import com.indocosmic.mymfnow.myGoals.MyGoalsActivity;
+import com.indocosmic.mymfnow.riskProfile.RiskProfile;
 import com.indocosmic.mymfnow.robo_planning.RoboDashboard;
 
 import java.util.ArrayList;
@@ -152,6 +153,10 @@ public class Home extends AppCompatActivity
                     startActivity(new Intent(getApplicationContext(),MyGoalsActivity.class));
                     overridePendingTransition(R.animator.move_left,R.animator.move_right);
                     finish();
+                }else if (parent_name.equalsIgnoreCase("Risk Tolerance")) {
+                    startActivity(new Intent(getApplicationContext(),RiskProfile.class));
+                    overridePendingTransition(R.animator.move_left,R.animator.move_right);
+                    finish();
                 }
 
 
@@ -190,12 +195,13 @@ public class Home extends AppCompatActivity
                 try {
                         fragment = (Fragment) fragmentClass.newInstance();
 
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
 
                 FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.mainFragment, fragment).commit();
+                fragmentManager.beginTransaction().replace(R.id.mainFragment, fragment).setCustomAnimations(R.animator.move_left,R.animator.move_right).commit();
 
 
                 drawer.closeDrawer(GravityCompat.START);
@@ -225,11 +231,12 @@ public class Home extends AppCompatActivity
 
     private void createGroupList() {
         groupList = new ArrayList<String>();
-        groupList.add("Mutual Funds");
-        groupList.add("Mutual Funds Manual");
+        groupList.add("Mutual Funds Holding Reports");
+        groupList.add("Mutual Funds Manual Entry");
         groupList.add("Transact Online");
         groupList.add("My Goals");
         groupList.add("Robo Advisor");
+        groupList.add("Risk Tolerance");
         groupList.add("Calculator");
     }
 
@@ -237,17 +244,18 @@ public class Home extends AppCompatActivity
 
         // preparing laptops collection(child)
         String[] mutual_fund_model = { "Portfolio", "Portfolio Analysis","SIP Schemes","All Transactions",
-                "Month Wise Transactions","Dividend History","Tax Report","Funds Performance" };
+                "Month Wise Transactions","Dividend History","Tax Report","Funds Performance"};
 
         String[] mutual_fund_model_manual = { "Fresh Purchase", "Fresh Purchase With SIP","Additional Purchase","Redemption",
                 "Systematic Withdrawal Plan","Systematic Transfer Plan","Switch","Edit Transactions" };
 
-        String[] transact_online_model = { "Lumpsum Investment", "Purchase With Existing Folio","NFO Purchase","SIP Investment",
-                "Redemption","Switch","STP","SWP" };
+        String[] transact_online_model = { "Lumpsum Investment","SIP Investment","SAVE-TAX (ELSS)","STP (Systematic Transfer Plan)","SWP (Systematic Withdrawal Plan)","Switch","Purchase with Existing Folio","NFO Purchase","Redemption" };
 
         String[] my_goal_model = {};
         String[] robo_advisor_model = {};
+        String[] risk_tolerance_model = {};
         String[] calculator_model = {};
+
 
 
         dataCollection = new LinkedHashMap<String, List<String>>();
@@ -263,7 +271,9 @@ public class Home extends AppCompatActivity
                 loadChild(my_goal_model);
             } else if (groupName.equalsIgnoreCase("Robo Advisor")) {
                 loadChild(robo_advisor_model);
-            } else if(groupName.equalsIgnoreCase("calculator_model")) {
+            } else if(groupName.equalsIgnoreCase("Risk Tolerance")) {
+                loadChild(risk_tolerance_model);
+            }else if(groupName.equalsIgnoreCase("calculator_model")) {
                 loadChild(calculator_model);
             }
 

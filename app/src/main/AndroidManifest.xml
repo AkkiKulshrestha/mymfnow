@@ -4,8 +4,6 @@
     package="com.indocosmic.mymfnow"
     android:installLocation="auto">
 
-
-
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -14,16 +12,14 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
 
-
-
     <application
         android:allowBackup="true"
+        android:alwaysRetainTaskState="true"
+        android:hardwareAccelerated="true"
         android:icon="@drawable/app_icon"
         android:label="@string/app_name"
-        android:supportsRtl="true"
         android:largeHeap="true"
-        android:hardwareAccelerated="true"
-        android:alwaysRetainTaskState="true"
+        android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:replace="android:theme,android:icon">
         <activity
@@ -35,71 +31,70 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
         <activity
             android:name=".LoginScreen"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Home"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".MainPortalDashboard"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
-
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".CalculatorDashboard"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
 
-        <!--Robo Dashboard Activities-->
+        <!-- Robo Dashboard Activities -->
         <activity
             android:name=".robo_planning.RoboDashboard"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"/>
-
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".robo_planning.RoboLumpsum"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".robo_planning.RoboSIP"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".robo_planning.RoboOnlineInvestment"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".robo_planning.RoboSavedPlans"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden" />
 
-        <!--My Goals Activity-->
-        <activity android:name=".myGoals.MyGoalsActivity"
-            android:theme="@style/AppTheme"/>
+        <!-- My Goals Activity -->
+        <activity
+            android:name=".myGoals.MyGoalsActivity"
+            android:theme="@style/AppTheme" />
 
-        <activity android:name=".myGoals.MyGoalsItemActivity"
-            android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".myGoals.MyGoalsItemActivity"
+            android:theme="@style/AppTheme" />
 
         <activity
             android:name=".myGoals.CreateGoal"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".myGoals.RecommendedPortFolio"
-            android:theme="@style/AppTheme"/>
 
+        <activity
+            android:name=".myGoals.RecommendedPortFolio"
+            android:theme="@style/AppTheme" />
+
+        <activity android:name=".riskProfile.RiskProfile"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

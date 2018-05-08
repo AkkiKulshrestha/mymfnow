@@ -1,5 +1,6 @@
 package com.indocosmic.mymfnow.utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,8 +9,10 @@ import android.os.Environment;
 import android.text.Editable;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -794,4 +797,18 @@ public class CommonMethods
 
 			return  year;
 		}
+
+
+
+        public static void clearForm(ViewGroup group) {
+            for (int i = 0, count = group.getChildCount(); i < count; ++i) {
+                View view = group.getChildAt(i);
+                if (view instanceof EditText) {
+                    ((EditText)view).setText("");
+                }
+
+                if(view instanceof ViewGroup && (((ViewGroup)view).getChildCount() > 0))
+                    clearForm((ViewGroup)view);
+            }
+        }
 	}

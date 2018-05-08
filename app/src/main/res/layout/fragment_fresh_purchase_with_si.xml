@@ -3,13 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/gradient_color_blue"
+    android:background="@color/white"
     tools:context="com.indocosmic.mymfnow.mutualFundManualFragmet.FreshPurchase">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:id="@+id/layout_parent">
 
 
         <TextView
@@ -18,24 +19,24 @@
             android:text="Fresh Purchase SIP"
             android:textSize="24sp"
             android:layout_margin="20sp"
-            android:textColor="@color/white"/>
+            android:textColor="@color/black"/>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/input_layout_scheme_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <EditText
+            <AutoCompleteTextView
                 android:id="@+id/edt_SchemeName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
-                android:padding="10sp"
-                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:textColor="@color/black"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="10dp"
-                android:textColorHint="@color/white"
+                android:textColorHint="@color/black"
                 android:hint="@string/hint_scheme_name" />
         </android.support.design.widget.TextInputLayout>
 
@@ -51,12 +52,13 @@
                 android:layout_height="wrap_content"
                 android:singleLine="true"
                 android:padding="10sp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="10dp"
-                android:textColorHint="@color/white"
-                android:hint="@string/hint_SIP_amount" />
+                android:textColorHint="@color/black"
+                android:hint="@string/hint_SIP_amount"
+                android:inputType="number"/>
 
         </android.support.design.widget.TextInputLayout>
 
@@ -75,11 +77,11 @@
                 android:editable="false"
                 android:inputType="date"
                 android:padding="10sp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="10dp"
-                android:textColorHint="@color/white"
+                android:textColorHint="@color/black"
                 android:hint="Select First Investment Date"
                 tools:ignore="Deprecated" />
         </android.support.design.widget.TextInputLayout>
@@ -98,11 +100,11 @@
                 android:editable="false"
                 android:inputType="date"
                 android:padding="10sp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="10dp"
-                android:textColorHint="@color/white"
+                android:textColorHint="@color/black"
                 android:hint="Select SIP Start Date"
                 tools:ignore="Deprecated" />
         </android.support.design.widget.TextInputLayout>
@@ -122,16 +124,32 @@
                 android:editable="false"
                 android:inputType="date"
                 android:padding="10sp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="10dp"
-                android:textColorHint="@color/white"
+                android:textColorHint="@color/black"
                 android:hint="Select SIP End Date"
                 tools:ignore="Deprecated" />
         </android.support.design.widget.TextInputLayout>
 
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Determine your risk profile"
+            android:textSize="18sp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="22dp"/>
+
+        <Spinner
+            android:id="@+id/spn_frequency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="4dp"/>
 
 
         <android.support.design.widget.TextInputLayout
@@ -146,11 +164,11 @@
                 android:singleLine="true"
                 android:padding="10sp"
                 android:inputType="number"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="10dp"
-                android:textColorHint="@color/white"
+                android:textColorHint="@color/black"
                 android:hint="@string/hint_Folio_Number" />
         </android.support.design.widget.TextInputLayout>
 
@@ -166,13 +184,45 @@
                 android:singleLine="true"
                 android:padding="10sp"
                 android:inputType="number"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="10dp"
-                android:textColorHint="@color/white"
+                android:textColorHint="@color/black"
                 android:hint="@string/hint_broker_code" />
         </android.support.design.widget.TextInputLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="10"
+            android:layout_marginBottom="5dp">
+
+            <Button
+                android:id="@+id/btnSubmitFreshPurchaseWithSip"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:background="@color/colorPrimaryLight"
+                android:textColor="@color/white"
+                android:text="@string/txt_submit"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                android:textSize="14sp"/>
+
+            <Button
+                android:id="@+id/btnResetFreshPurchaseWithSip"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:background="@color/colorPrimaryLight"
+                android:textColor="@color/white"
+                android:text="@string/txt_reset"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                android:textSize="14sp"/>
+
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

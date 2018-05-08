@@ -50,7 +50,7 @@ public class CreateGoal extends AppCompatActivity implements View.OnClickListene
 
     TextView txt_mygoal_name;
     String str_mygoal_name,selected_RiskType,todays_value,target_amount,years,sip_amount;
-
+    String GoalAmount,Str_Years_To_Save_Goal;
     TextInputEditText goal_name,goal_age,goal_amount_to_consider,years_to_save_goal,inflation_percent;
 
     TextInputEditText money_required_today,years_after_amount_return;
@@ -97,8 +97,9 @@ public class CreateGoal extends AppCompatActivity implements View.OnClickListene
         inflation_percent = (TextInputEditText) findViewById(R.id.inflation_percent);
         btnCreateGoal = (Button) findViewById(R.id.btnCreateGoal);
         btnAchieveGoal = (Button) findViewById(R.id.btnAchieveGoal);
-
         money_required_today = (TextInputEditText) findViewById(R.id.money_required_today);
+        money_required_today.addTextChangedListener(new NumberTextWatcherForThousand(money_required_today));
+
         years_after_amount_return = (TextInputEditText) findViewById(R.id.years_after_amount_return);
 
         Card_ResultSummary = (CardView)findViewById(R.id.Card_ResultSummary);
@@ -160,7 +161,17 @@ public class CreateGoal extends AppCompatActivity implements View.OnClickListene
         myDialog.setCancelable(false);
         myDialog.setCanceledOnTouchOutside(false);
         myDialog.show();
-        final String GoalAmount = NumberTextWatcherForThousand.trimCommaOfString(goal_amount_to_consider.getText().toString());
+
+
+        if (str_mygoal_name.equalsIgnoreCase("Wealth Creation")) {
+            GoalAmount = NumberTextWatcherForThousand.trimCommaOfString(goal_amount_to_consider.getText().toString());
+            Str_Years_To_Save_Goal = years_to_save_goal.getText().toString().trim();
+        }else {
+            GoalAmount = NumberTextWatcherForThousand.trimCommaOfString(money_required_today.getText().toString());
+            Str_Years_To_Save_Goal = years_after_amount_return.getText().toString().trim();
+        }
+
+        //final String GoalAmount = NumberTextWatcherForThousand.trimCommaOfString(goal_amount_to_consider.getText().toString());
         final String RiskProfile = CommonMethods.UrlFormatString(selected_RiskType);
         String URL_Create_Goal = RestClient.ROOT_URL + "/robo/getSIPAmount";
         try {
@@ -176,7 +187,7 @@ public class CreateGoal extends AppCompatActivity implements View.OnClickListene
                             @Override
                             public void onResponse(String response) {
                                 myDialog.dismiss();
-                                Log.d("Response",response);
+                                Log.d("CreateGoalResponse",response);
                                 try {
                                    JSONObject jsonResponse = new JSONObject(response);
 
@@ -240,7 +251,7 @@ public class CreateGoal extends AppCompatActivity implements View.OnClickListene
                         params.put("goal_name", goal_name.getText().toString());
                         params.put("current_age", goal_age.getText().toString());
                         params.put("todays_value", GoalAmount);
-                        params.put("years", years_to_save_goal.getText().toString());
+                        params.put("years", Str_Years_To_Save_Goal);
                         params.put("inflation_rate", inflation_percent.getText().toString());
                         params.put("risk_profile", RiskProfile );
                         Log.d("ParrasCreateGoal",params.toString() );
@@ -256,10 +267,9 @@ public class CreateGoal extends AppCompatActivity implements View.OnClickListene
                 RequestQueue requestQueue = Volley.newRequestQueue(this);
                 requestQueue.add(stringRequest);
 
-
-
             } else {
                 CommonMethods.DisplayToast(this, "Please check your internet connection");
+                myDialog.dismiss();
             }
         } catch (Exception e) {
 

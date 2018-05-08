@@ -19,6 +19,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -30,6 +31,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.indocosmic.mymfnow.R;
+import com.indocosmic.mymfnow.utils.CommonMethods;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -59,6 +61,7 @@ public class FreshPurchase extends Fragment implements View.OnClickListener,Text
     private SimpleDateFormat dateFormatter;
     private static final String TAG = "FreshPurchase";
     ArrayAdapter<String> adapter;
+    LinearLayout layout_parent_linear;
     Calendar newCalendar;
     public FreshPurchase() {
         // Required empty public constructor
@@ -164,17 +167,18 @@ public class FreshPurchase extends Fragment implements View.OnClickListener,Text
         input_layout_amount = (TextInputLayout) rootView.findViewById(R.id.input_layout_amount);
         input_layout_Units = (TextInputLayout) rootView.findViewById(R.id.input_layout_Units);
 
+        btnSubmitFreshPurchase = (Button) rootView.findViewById(R.id.btnSubmitFreshPurchase);
+        btnResetFreshPurchase = (Button) rootView.findViewById(R.id.btnResetFreshPurchase);
 
         edt_purchaseDate.setOnClickListener(this);
         edt_SchemeName.addTextChangedListener(this);
-
+        btnResetFreshPurchase.setOnClickListener(this);
 
         edt_SchemeName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(getActivity(), "pos=", Toast.LENGTH_SHORT).show();
-               // dividendRadioGroup.setVisibility(View.VISIBLE);
-               // txt_dividend_option.setVisibility(View.VISIBLE);
+
             }
 
             @Override
@@ -226,6 +230,9 @@ public class FreshPurchase extends Fragment implements View.OnClickListener,Text
                     break;
             }
 
+            case R.id.btnResetFreshPurchase:
+                CommonMethods.clearForm((ViewGroup) rootView.findViewById(R.id.layout_parent_linear));
+                break;
         }
     }
 
@@ -244,7 +251,7 @@ public class FreshPurchase extends Fragment implements View.OnClickListener,Text
 
                             for (int i=0;i<jsonArray.length();i++) {
 
-                                String strValue=jsonArray.optString(i);
+                                String strValue= jsonArray.optString(i);
 
                                 Log.d(TAG, "innerJson: "+strValue);
                                 arrList.add(strValue);

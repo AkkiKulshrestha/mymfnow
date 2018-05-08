@@ -13,7 +13,9 @@
     <color name="colorPrimayYellow">#ede917</color>
     <color name="primary_light_blue">#6aacd9</color>
     <color name="group_divider_color">#80CBC4</color>
-
+    <color name="red_close">#fc1208</color>
+    <color name="pie_chart_blue">#3a4692</color>
+    <color name="bg_grey_light">#F4F4F4</color>
 
     <color name="list_background_pressed">#d8d8d8</color>
     <color name="list_background">#fff</color>
@@ -21,7 +23,7 @@
     <color name="navigationBarColor">#000000</color>
     <color name="textColorPrimary">#FFFFFF</color>
     <color name="windowBackground">#FFFFFF</color>
-    <color name="red_close">#f57c7c</color>
+
     <color name="edittext_bg_color">#0E1F26</color>
     <color name="btn_color_yellow">#DFB223</color>
     <color name="orange">#f7af50</color>

@@ -1,5 +1,6 @@
 package com.indocosmic.mymfnow.utils;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -9,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -127,17 +129,20 @@ public class MyValidator {
         return hasImage;
     }
 
-    public static boolean CheckDates(String StartDT,String EndDT)    {
+    public static boolean CheckDates(String StartDT,String EndDT,EditText edt_SIPEndDate)    {
         SimpleDateFormat dfDate  = new SimpleDateFormat("yyyy-MM-dd");
         boolean b = false;
         try {
             if(dfDate.parse(StartDT).before(dfDate.parse(EndDT)))
             {
+
                 b = true;//If start date is before end date
+                edt_SIPEndDate.setError("End Date Should Be Greater Than Start Date");
             }
             else if(dfDate.parse(StartDT).equals(dfDate.parse(EndDT)))
             {
                 b = false;//If two dates are equal
+                edt_SIPEndDate.setError("End Date Should Be Greater Than Start Date");
             }
             else
             {
@@ -149,5 +154,7 @@ public class MyValidator {
         }
         return b;
     }
+
+
 
 }

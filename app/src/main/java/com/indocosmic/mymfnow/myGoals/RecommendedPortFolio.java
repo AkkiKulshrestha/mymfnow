@@ -1,12 +1,17 @@
 package com.indocosmic.mymfnow.myGoals;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
@@ -25,12 +30,12 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.formatter.PercentFormatter;
-import com.github.mikephil.charting.utils.ColorTemplate;
 import com.indocosmic.mymfnow.R;
 import com.indocosmic.mymfnow.utils.CommonMethods;
 import com.indocosmic.mymfnow.utils.ConnectionDetector;
 import com.indocosmic.mymfnow.webservices.RestClient;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -41,12 +46,18 @@ import java.util.Map;
 public class RecommendedPortFolio extends AppCompatActivity {
 
     ProgressDialog myDialog;
-    String str_todays_amount,str_current_age,str_target_amount,str_sip_amount,str_years,risk_profile;
+    String str_todays_amount,str_current_age,str_target_amount,str_sip_amount,str_years,risk_profile,allocation_amount,allocation_percentage;
+    String scheme_name,category;
+    String current_age,target_amount,sip_amount,years,res_risk_profile,short_term_debt,long_term_debt;
     int debt,equity;
     TextView txt_todays_amount;
     PieChart pieChart;
+    LinearLayout ll_parent_recomendportfolio;
+    int no_recomended_portfolio;
+    Double int_allocation_percentage=0.0,int_allocation_amount=0.0;
 
-    String current_age,target_amount,sip_amount,years,res_risk_profile,short_term_debt,long_term_debt;
+    EditText edt_total_allocation_per,edt_total_allocation_amnt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +77,9 @@ public class RecommendedPortFolio extends AppCompatActivity {
 
     private void init() {
         txt_todays_amount = (TextView) findViewById(R.id.txt_todays_amount);
+        ll_parent_recomendportfolio = (LinearLayout) findViewById(R.id.ll_parent_recomendportfolio);
+        edt_total_allocation_per = (EditText)findViewById(R.id.edt_total_allocation_per);
+        edt_total_allocation_amnt = (EditText)findViewById(R.id.edt_total_allocation_amnt);
 
         if (getIntent() != null) {
 
@@ -87,6 +101,7 @@ public class RecommendedPortFolio extends AppCompatActivity {
 
 
     private void APIrecommendedPortfolio() {
+        ll_parent_recomendportfolio.removeAllViews();
         myDialog = new ProgressDialog(this);
         myDialog.setMessage("Please wait...");
         myDialog.setCancelable(false);
@@ -120,6 +135,62 @@ public class RecommendedPortFolio extends AppCompatActivity {
                                      long_term_debt = jsonResponse.getString("long_term_debt");
                                      debt = jsonResponse.getInt("debt");
                                      equity = jsonResponse.getInt("equity");
+
+
+                                    JSONArray recommendedListArray = jsonResponse.getJSONArray("list");
+
+                                    for (int i=0;i<recommendedListArray.length();i++) {
+
+                                        JSONObject recommendedListObject = recommendedListArray.getJSONObject(i);
+
+
+                                         scheme_name = recommendedListObject.getString("scheme_name");
+                                         category = recommendedListObject.getString("category");
+                                         allocation_percentage = recommendedListObject.getString("allocation_percentage");
+                                         allocation_amount = recommendedListObject.getString("allocation_amount");
+
+                                        //row_layout.setPadding(10,10,10,10);
+                                        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                                        final View rowView = inflater.inflate(R.layout.scheme_list_row, null);
+
+                                        TextView row_scheme_name = (TextView)rowView.findViewById(R.id.row_scheme_name);
+                                        row_scheme_name.setText(scheme_name);
+
+                                        final TextView row_scheme_category = (TextView)rowView.findViewById(R.id.row_scheme_category);
+                                        row_scheme_category.setText(category);
+
+                                        final EditText row_edt_allocation_per = (EditText) rowView.findViewById(R.id.row_edt_allocation_per);
+                                        row_edt_allocation_per.setText(allocation_percentage);
+
+
+                                        final EditText row_edt_allocation_amount = (EditText) rowView.findViewById(R.id.row_edt_allocation_amount);
+                                        row_edt_allocation_amount.setText(allocation_amount);
+
+                                        final TextView row_changeScheme = (TextView)rowView.findViewById(R.id.row_changeScheme);
+
+                                        row_changeScheme.setHint(String.valueOf(no_recomended_portfolio));
+
+
+                                        final CheckBox row_chk_save = (CheckBox) rowView.findViewById(R.id.row_chk_save);
+
+
+                                        int_allocation_percentage = int_allocation_percentage+Double.valueOf(allocation_percentage);
+                                        int_allocation_amount = int_allocation_amount+Double.valueOf(allocation_amount);
+
+                                        row_changeScheme.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                CommonMethods.DisplayToast(getApplicationContext(),row_changeScheme.getHint().toString());
+                                                Log.d("Rows Category", row_scheme_category.getText().toString());
+                                            }
+                                        });
+
+                                        ll_parent_recomendportfolio.addView(rowView);
+                                        no_recomended_portfolio++;
+
+                                        edt_total_allocation_per.setText(""+int_allocation_percentage);
+                                        edt_total_allocation_amnt.setText(""+int_allocation_amount);
+                                    }
 
                                     drawPieChart();
 
@@ -163,7 +234,6 @@ public class RecommendedPortFolio extends AppCompatActivity {
                 stringRequest.setRetryPolicy(policy);
                 RequestQueue requestQueue = Volley.newRequestQueue(this);
                 requestQueue.add(stringRequest);
-
 
 
             } else {
