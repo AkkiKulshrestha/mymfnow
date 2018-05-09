@@ -19,14 +19,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:background="@color/colorPrimayYellow"
+                android:background="@color/btn_color_yellow"
                 android:padding="10dp"
+                android:lineSpacingMultiplier="1.2"
                 android:textSize="14sp"/>
 
             <RadioGroup
                 android:id="@+id/radiogroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+
                 android:orientation="vertical">
 
                 <RadioButton
@@ -34,7 +37,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="#000"
-                    android:layout_marginBottom="5dp"/>
+                    android:layout_marginBottom="5dp"
+                    />
 
                 <RadioButton
                     android:id="@+id/option2"

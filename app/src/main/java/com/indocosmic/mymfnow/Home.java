@@ -153,7 +153,7 @@ public class Home extends AppCompatActivity
                     startActivity(new Intent(getApplicationContext(),MyGoalsActivity.class));
                     overridePendingTransition(R.animator.move_left,R.animator.move_right);
                     finish();
-                }else if (parent_name.equalsIgnoreCase("Risk Tolerance")) {
+                }else if (parent_name.equalsIgnoreCase("Risk Profile")) {
                     startActivity(new Intent(getApplicationContext(),RiskProfile.class));
                     overridePendingTransition(R.animator.move_left,R.animator.move_right);
                     finish();
@@ -236,7 +236,7 @@ public class Home extends AppCompatActivity
         groupList.add("Transact Online");
         groupList.add("My Goals");
         groupList.add("Robo Advisor");
-        groupList.add("Risk Tolerance");
+        groupList.add("Risk Profile");
         groupList.add("Calculator");
     }
 
@@ -271,7 +271,7 @@ public class Home extends AppCompatActivity
                 loadChild(my_goal_model);
             } else if (groupName.equalsIgnoreCase("Robo Advisor")) {
                 loadChild(robo_advisor_model);
-            } else if(groupName.equalsIgnoreCase("Risk Tolerance")) {
+            } else if(groupName.equalsIgnoreCase("Risk Profile")) {
                 loadChild(risk_tolerance_model);
             }else if(groupName.equalsIgnoreCase("calculator_model")) {
                 loadChild(calculator_model);
