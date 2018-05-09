@@ -120,7 +120,7 @@
     </style>
 
 
-    <style name="simpletooltip_default" parent="@android:style/TextAppearance.Medium"></style>
+    <style name="simpletooltip_default" parent="@android:style/TextAppearance.Medium"/>
 
     <style name="radionbutton" parent="Base.Widget.AppCompat.CompoundButton.RadioButton">
 

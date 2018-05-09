@@ -28,8 +28,12 @@ import com.indocosmic.mymfnow.fragments.DashBoard;
 import com.indocosmic.mymfnow.fragments.Portfolio;
 import com.indocosmic.mymfnow.fragments.PortfolioAnalysis;
 import com.indocosmic.mymfnow.fragments.SIPSchemes;
+import com.indocosmic.mymfnow.mutualFundManualFragmet.AdditionalPurchase;
 import com.indocosmic.mymfnow.mutualFundManualFragmet.FreshPurchase;
 import com.indocosmic.mymfnow.mutualFundManualFragmet.FreshPurchaseWithSIP;
+import com.indocosmic.mymfnow.mutualFundManualFragmet.Redemption;
+import com.indocosmic.mymfnow.mutualFundManualFragmet.SystematicTransferPlan;
+import com.indocosmic.mymfnow.mutualFundManualFragmet.SystematicWithdrawalPlan;
 import com.indocosmic.mymfnow.myGoals.MyGoalsActivity;
 import com.indocosmic.mymfnow.riskProfile.RiskProfile;
 import com.indocosmic.mymfnow.robo_planning.RoboDashboard;
@@ -190,6 +194,14 @@ public class Home extends AppCompatActivity
                     fragmentClass = FreshPurchase.class;
                 }else if (selected.equalsIgnoreCase("Fresh Purchase With SIP")){
                     fragmentClass = FreshPurchaseWithSIP.class;
+                }else if (selected.equalsIgnoreCase("Additional Purchase")){
+                    fragmentClass = AdditionalPurchase.class;
+                }else if (selected.equalsIgnoreCase("Redemption")){
+                    fragmentClass = Redemption.class;
+                }else if (selected.equalsIgnoreCase("Systematic Withdrawal Plan")){
+                    fragmentClass = SystematicWithdrawalPlan.class;
+                }else if (selected.equalsIgnoreCase("Systematic Transfer Plan")){
+                    fragmentClass = SystematicTransferPlan.class;
                 }
 
                 try {
@@ -201,7 +213,8 @@ public class Home extends AppCompatActivity
                 }
 
                 FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.mainFragment, fragment).setCustomAnimations(R.animator.move_left,R.animator.move_right).commit();
+                fragmentManager.beginTransaction().replace(R.id.mainFragment, fragment)
+                        .setCustomAnimations(R.animator.fragment_animation_fade_in,R.animator.fragment_animation_fade_out).commit();
 
 
                 drawer.closeDrawer(GravityCompat.START);
@@ -261,9 +274,9 @@ public class Home extends AppCompatActivity
         dataCollection = new LinkedHashMap<String, List<String>>();
 
         for (String groupName : groupList) {
-            if (groupName.equalsIgnoreCase("Mutual Funds")) {
+            if (groupName.equalsIgnoreCase("Mutual Funds Holding Reports")) {
                 loadChild(mutual_fund_model);
-            } else if (groupName.equalsIgnoreCase("Mutual Funds Manual")) {
+            } else if (groupName.equalsIgnoreCase("Mutual Funds Manual Entry")) {
                 loadChild(mutual_fund_model_manual);
             } else if (groupName.equalsIgnoreCase("Transact Online")) {
                 loadChild(transact_online_model);

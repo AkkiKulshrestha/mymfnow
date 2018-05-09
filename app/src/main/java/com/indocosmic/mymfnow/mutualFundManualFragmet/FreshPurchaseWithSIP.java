@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.AppCompatSpinner;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -57,9 +58,8 @@ public class FreshPurchaseWithSIP extends Fragment implements View.OnClickListen
 
     String Str_SIP_Start_Date,Str_SIP_End_Date;
     private SimpleDateFormat dateFormatter;
-    Spinner spn_frequency;
+    AppCompatSpinner spn_frequency;
     View rootView;
-    LinearLayout layout_parent;
 
     Button btnSubmitFreshPurchaseWithSip,btnResetFreshPurchaseWithSip;
     private static final String[] Frequency_Items = {"Select","Daily", "Weekely", "Fortnightly", "Monthly", "Quarterly"};
@@ -97,7 +97,7 @@ public class FreshPurchaseWithSIP extends Fragment implements View.OnClickListen
 
         edt_Folio_Number = (EditText) rootView.findViewById(R.id.edt_Folio_Number);
         edt_broker_code = (EditText) rootView.findViewById(R.id.edt_broker_code);
-        spn_frequency = (Spinner) rootView.findViewById(R.id.spn_frequency);
+        spn_frequency = (AppCompatSpinner) rootView.findViewById(R.id.spn_frequency);
 
        // layout_parent = (LinearLayout) rootView.findViewById(R.id.layout_parent);
 
