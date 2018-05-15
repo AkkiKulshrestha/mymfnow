@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Information as required by SEBI"
+        android:layout_margin="20sp"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:textSize="14sp"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Gender"
+        android:textColor="@color/black"
+        android:layout_marginStart="20sp"/>
+
+    <Spinner
+        android:id="@+id/Spn_Gender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/spin_item_gender"
+        android:layout_marginStart="15sp"
+        android:layout_marginEnd="15sp"
+        android:layout_marginTop="5dp"
+        />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Place (City) of Birth"
+        android:layout_marginTop="10sp"
+        android:textColor="@color/black"
+        android:layout_marginStart="20sp"/>
+
+    <EditText
+        android:id="@+id/Edt_BirthCity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Place of Birth"
+        android:textColorHint="@color/grey"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:layout_marginStart="15sp"
+        android:layout_marginEnd="15sp"
+        android:layout_marginTop="5dp"
+        android:imeOptions="actionNext"
+        android:inputType="text"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Country"
+        android:layout_marginTop="10sp"
+        android:textColor="@color/black"
+        android:layout_marginStart="20sp"/>
+
+    <EditText
+        android:id="@+id/Edt_Country"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Country"
+        android:textColorHint="@color/grey"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:layout_marginStart="15sp"
+        android:layout_marginEnd="15sp"
+        android:layout_marginTop="5dp"
+        android:imeOptions="actionDone"
+        android:inputType="text"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Employment Status"
+        android:textColor="@color/black"
+        android:layout_marginStart="20sp"
+        android:layout_marginTop="10sp"/>
+
+    <Spinner
+        android:id="@+id/Spn_Occupation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/spin_item_occupation"
+        android:layout_marginStart="15sp"
+        android:layout_marginEnd="15sp"
+        android:layout_marginTop="5dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Annual Salary"
+        android:textColor="@color/black"
+        android:layout_marginStart="20sp"
+        android:layout_marginTop="10sp"/>
+
+    <Spinner
+        android:id="@+id/Spn_AnnualSalary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/spin_item_annual_salary"
+        android:layout_marginStart="15sp"
+        android:layout_marginEnd="15sp"
+        android:layout_marginTop="5dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Source of Income"
+        android:textColor="@color/black"
+        android:layout_marginStart="20sp"
+        android:layout_marginTop="10sp"/>
+
+    <Spinner
+        android:id="@+id/Spn_IncomeSource"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/spin_item_income_source"
+        android:layout_marginStart="15sp"
+        android:layout_marginEnd="15sp"
+        android:layout_marginTop="5dp"
+        />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="20sp"
+        android:id="@+id/Rg_extra_details">
+
+        <RadioButton
+            android:id="@+id/Rb_PolicallyExposed"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="I am politically exposed person."
+            android:buttonTint="@color/primary_green"
+            />
+
+        <RadioButton
+            android:id="@+id/Rb_RelatedPolicallyExposed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="I am related to  politically exposed person."
+            android:buttonTint="@color/primary_green"
+            />
+
+
+        <RadioButton
+            android:id="@+id/Rb_NotApplicable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Not Applicable"
+            android:buttonTint="@color/primary_green"
+            />
+
+
+
+
+    </RadioGroup>
+
+
+</LinearLayout>

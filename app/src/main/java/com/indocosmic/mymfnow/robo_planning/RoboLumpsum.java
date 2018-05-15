@@ -63,7 +63,6 @@ public class RoboLumpsum extends AppCompatActivity{
     public String[] ArrayListRiskToleranceType= new String[] {"Select Category","Conservative","Moderately Conservative", "Moderate", "Moderately Aggressive" , "Aggressive"};
 
     LinearLayout CardPlanCreated;
-    ProgressDialog myDialog;
     JSONObject JSONObjectResponse;
 
     String AssetAllocationEquityPer,AssetAllocationDebtPer,AssetAllocationEquityAmt,AssetAllocationDebtAmt,OverViewEquityBalanced,OverViewEquityDiversified,OverViewEquityMidcap;
@@ -77,7 +76,7 @@ public class RoboLumpsum extends AppCompatActivity{
     ArrayList scheme_list_array;
     LinearLayout ll_parent_portfolio;
     int object_no_portfolio=1;
-
+    ProgressDialog myDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

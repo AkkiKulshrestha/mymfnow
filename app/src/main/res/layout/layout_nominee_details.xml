@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="We recommend that you specify a nominee for your investments."
+        android:layout_margin="20sp"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:textSize="14sp"/>
+
+
+    <CheckBox
+        android:id="@+id/Chk_Nonominee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:buttonTint="@color/primary_green"
+        android:layout_marginStart="20sp"
+        android:layout_marginEnd="10sp"
+        android:textSize="13sp"
+        android:text="I do not want to specify a nominee at this time."/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Name of Nominee"
+        android:layout_marginTop="10sp"
+        android:textColor="@color/black"
+        android:layout_marginStart="20sp"/>
+
+    <EditText
+        android:id="@+id/Edt_NomineeName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nominee Name"
+        android:textColorHint="@color/grey"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:layout_marginStart="15sp"
+        android:layout_marginEnd="15sp"
+        android:layout_marginTop="5dp"
+        android:imeOptions="actionNext"
+        android:inputType="text"
+        />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Relation with Nominee"
+        android:layout_marginTop="10sp"
+        android:textColor="@color/black"
+        android:layout_marginStart="20sp"/>
+
+    <EditText
+        android:id="@+id/Edt_RelationWithNominee"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nominee Relationship"
+        android:textColorHint="@color/grey"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:layout_marginStart="15sp"
+        android:layout_marginEnd="15sp"
+        android:layout_marginTop="5dp"
+        android:imeOptions="actionDone"
+        android:inputType="text"
+        />
+
+
+</LinearLayout>

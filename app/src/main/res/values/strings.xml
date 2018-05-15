@@ -36,4 +36,64 @@
     <string name="txt_submit">Submit</string>
     <string name="txt_reset">Reset</string>
 
+
+    <string-array name = "spin_item_gender">
+        <item>Select Gender</item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <string-array name="spin_item_occupation">
+        <item>Select Occupation</item>
+        <item>Business</item>
+        <item>Service</item>
+        <item>Professional</item>
+        <item>Agriculturist</item>
+        <item>Retired</item>
+        <item>House wife</item>
+        <item>Students</item>
+        <item>Others</item>
+        <item>Doctor</item>
+        <item>Private Sector Service</item>
+        <item>Public Sector Service</item>
+        <item>Forex Dealer</item>
+        <item>Government Service</item>
+        <item>Unknown/ Not Applicable</item>
+
+    </string-array>
+
+
+    <string-array name="spin_item_annual_salary">
+        <item>Select Annual Salary</item>
+        <item>Below 1 lakh</item>
+        <item>1 - 5 Lakhs</item>
+        <item>5 - 10 Lakhs</item>
+        <item>10 - 25 Lakhs</item>
+        <item>25 Lakhs - 1 Crore</item>
+        <item>Above 1 Crore</item>
+
+    </string-array>
+
+    <string-array name="spin_item_income_source">
+        <item>Select Income Source</item>
+        <item>Salary</item>
+        <item>Business Income</item>
+        <item>Gift</item>
+        <item>Ancestral Property</item>
+        <item>Rental Income</item>
+        <item>Prize Money</item>
+        <item>Royalty</item>
+        <item>Others</item>
+    </string-array>
+
+    <string-array name="spin_item_address_type">
+        <item>Select Address Type</item>
+        <item>Residential or Business</item>
+        <item>Residential</item>
+        <item>Business</item>
+        <item>Registered Office</item>
+        <item>Unspecified</item>
+    </string-array>
+
+
 </resources>
