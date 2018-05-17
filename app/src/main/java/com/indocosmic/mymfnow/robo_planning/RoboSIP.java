@@ -270,6 +270,7 @@ public class RoboSIP extends AppCompatActivity {
                         params.put("time_horizon", EdtNo_Of_Years.getText().toString());
                         params.put("sip_amount", StrAmount);
                         Log.d("ParrasRoboSip",params.toString() );
+
                         return params;
                     }
 
